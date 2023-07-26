@@ -1,0 +1,31 @@
+<div class="header">
+
+  <div class="warnning">
+    <h4>What your action</h4>
+
+  </div>
+</div>
+<form (ngSubmit)="reject()" #myForm="ngForm">
+  <div class="container">
+    <div class="content">
+      <div class="text">
+        <p>
+          <span>Write your reason (IF choose reject):</span>
+          <mat-form-field appearance="outline" class=" select-form">
+            <input matInput type="text" [(ngModel)]="reason">
+            <button *ngIf="reason" matSuffix mat-icon-button aria-label="Clear" (click)="reason=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </p>
+
+
+      </div>
+      <div class="button">
+        <button color="warn" mat-button mat-dialog-close mat-raised-button type="submit"
+          [disabled]="!myForm.valid">Reject</button>
+        <button color="" mat-button mat-dialog-close mat-raised-button type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+</form>

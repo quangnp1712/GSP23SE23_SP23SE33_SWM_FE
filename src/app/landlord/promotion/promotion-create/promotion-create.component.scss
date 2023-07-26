@@ -1,0 +1,86 @@
+.page {
+  background-color: rgb(249, 250, 252);
+}
+
+
+.login-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.login-card {
+  background-color: white;
+  box-shadow: rgb(100 116 139 / 12%) 0px 10px 15px;
+}
+
+.password,
+.username {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+}
+
+
+
+.login-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+.login-button-div {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+
+  button {
+    height: 45px;
+  }
+
+  .login-button {
+    font-size: large;
+  }
+
+}
+
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fccb90;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #FFCE03, #FD9A01, #FD6104, #FF2C05);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #FFCE03, #FD9A01, #FD6104, #FF2C05);
+}
+
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+  }
+}
+
+.gmail-button {
+  color: white !important;
+}
+.login-icon{
+  img{
+    width: 100px;
+    max-width: 100px;
+    min-width: 100px;
+  }
+}

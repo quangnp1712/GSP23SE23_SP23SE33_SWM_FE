@@ -1,0 +1,167 @@
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fccb90;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #FFCE03, #FD9A01, #FD6104, #FF2C05);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #FFCE03, #FD9A01, #FD6104, #FF2C05);
+}
+
+.btn-register {
+  color: white !important;
+  font-weight: 500;
+}
+
+.li-login {
+
+  border-radius: 5px;
+  width: fit-content;
+
+  button {
+    color: rgb(1, 148, 243);
+    font-family: MuseoSans, Roboto, sans-serif !important;
+    font-size: 20px;
+    letter-spacing: 0.7px;
+    font-weight: 500;
+
+  }
+}
+
+.logo-isExpanded {
+  height: 53px;
+  max-height: 53px;
+  min-height: 53px;
+}
+
+.logo {
+  height: 49px;
+  max-height: 49px;
+  min-height: 49px;
+}
+
+
+.left {
+  max-width: 256px;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+:host ::ng-deep .mat-drawer-content,
+.mat-drawer {
+  overflow: unset !important;
+  overflow-y: unset !important;
+}
+
+:host ::ng-deep .mat-drawer-inner-container {
+  overflow: unset !important;
+}
+
+
+/* width  left */
+#left::-webkit-scrollbar {
+  display: none;
+}
+
+
+#right::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: #F5F5F5;
+}
+
+#right::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+#right::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #fd5f04;
+  background-image: -webkit-linear-gradient(45deg,
+      rgba(255, 255, 255, 0.3) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0.3) 75%,
+      transparent 75%,
+      transparent)
+}
+
+.navbar {
+  height: 9vh;
+  max-height: 9vh;
+  min-height: 9vh;
+}
+
+.main-content {
+  height: 91vh;
+  max-height: 91vh;
+  min-height: 91vh;
+}
+
+.sidenav {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-image: linear-gradient(315deg, #FFFF00cc, #FD9A01cc, #FD6104cc, #FF2C05cc, );
+  background-image: -webkit-linear-gradient(315deg, #FFFF00cc, #FD9A01cc, #FD6104cc, #FF2C05cc, );
+}
+
+
+.user {
+
+  .icon {
+    .avatar {
+      width: 40px;
+      max-width: 40px;
+    }
+  }
+
+  .username {
+
+
+    .name {
+      width: 60px;
+      font-size: 18px;
+      min-height: 19px;
+      line-height: 18px;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
+
+    .roles {
+      font-size: 12px;
+      font-weight: 400;
+    }
+  }
+
+  .collapse-avatar {
+
+
+    .btn-collapse-avatar {
+      font-size: 20px;
+    }
+  }
+
+  .logout {
+    .btn-logout {
+
+      font-size: 20px;
+      color: #9a9a9a;
+    }
+  }
+}

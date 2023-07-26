@@ -1,0 +1,303 @@
+<div class="container mt-3 mb-5">
+  <div class="row w-100">
+    <div class="col-xl-3 col-lg-4">
+      <div class="card">
+        <img class="card-img-top img-fluid"
+          src="https://firebasestorage.googleapis.com/v0/b/stay-with-me-356017.appspot.com/o/landlord%2Favatar%2Fdefault.png?alt=media&token=d62361f3-6391-44f5-80a7-b22bda704b04">
+        <div class="card-body text-center">
+          <!-- <h5 class=" card-title m-0">{{username}} </h5>
+          <div class="cart-text"><span> {{email}} </span></div>
+          <div class="badge rounded-pill d-inline w-100 mt-4 fs-6 badge-success"><span class="">Hoat dong</span></div> -->
+          <div class="balance mt-1">
+
+
+            <aside id="info-block">
+              <section class="file-marker">
+                <div>
+                  <div class="box-title">
+                    Total Balance
+                  </div>
+                  <div class="text-center money">
+                    <span class="fs-5 ">{{balance | currency:'VND'}}</span>
+                  </div>
+
+                </div>
+
+              </section>
+            </aside>
+            <div class="box-footer">
+
+
+              <div class="btn-add" matRipple (click)="toggle.editProfile = !toggle.editProfile;
+              showDiv.editProfile = !showDiv.editProfile;
+              showDiv.addBalance=false;showDiv.cashOut = false;showDiv.changePass= false;"
+                [ngClass]="{'active' : toggle.editProfile, 'default': !toggle.editProfile}"> <i
+                  class="fa-solid fa-arrow-right-from-bracket"></i> Profile </div>
+
+
+              <div class="btn-add" matRipple (click)="toggle.addBalance = !toggle.addBalance;
+                showDiv.addBalance= !showDiv.addBalance;
+                showDiv.cashOut = false; showDiv.changePass= false;showDiv.editProfile= false;"
+                [ngClass]="{'active' : toggle.addBalance, 'default': !toggle.addBalance}">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                Add Balance
+              </div>
+
+              <!-- <div class="btn-add" matRipple (click)="toggle.cashOut = !toggle.cashOut;
+                showDiv.cashOut = !showDiv.cashOut;
+                showDiv.changePass= false; showDiv.addBalance = false;showDiv.editProfile= false;"
+                [ngClass]="{'active' : toggle.cashOut, 'default': !toggle.cashOut}"> <i
+                  class="fa-solid fa-arrow-right-from-bracket"></i> Cash Out </div> -->
+
+
+
+              <!-- <div class="btn-add" matRipple routerLink="/ForgetPassword">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> Change Password
+              </div> -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-9 col-lg-8" *ngIf="showDiv.editProfile">
+      <div class="card">
+        <form>
+          <div class="card-header ">
+            <h1 class="">Profile</h1>
+          </div>
+          <div class="card-header border-0">
+            <div class="row w-100 m-0 p-0">
+              <div class="col-8 m-0 p-0">
+                <h4 class="posttitle-text mb-0">Account Information</h4>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="login-input">
+                  <!-- Username -->
+                  <div class="username">
+                    <mat-form-field class="input-username w-100" appearance="outline">
+                      <mat-label>Name</mat-label>
+                      <input matInput type="text" name="txtUsername" [(ngModel)]="username" readonly>
+                      <mat-icon matPrefix><i class="fa-solid fa-user"></i></mat-icon>
+
+                    </mat-form-field>
+                  </div>
+
+
+                  <!-- Phone number -->
+                  <div class="username">
+                    <mat-form-field class="input-username w-100" appearance="outline">
+                      <mat-label>Phone</mat-label>
+                      <input matInput pattern="^[0]\d{9,12}$" type="tel" name="txtPhone" maxlength="10" minlength="10"
+                        [readonly]="isUpdate == true ? 'false' : 'true'" [(ngModel)]="phone"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                      <mat-icon matPrefix><i class="fa-solid fa-phone"></i></mat-icon>
+
+                    </mat-form-field>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="login-input">
+                  <!-- Email -->
+                  <div class="username">
+                    <mat-form-field class="input-username w-100" appearance="outline">
+                      <mat-label>Email</mat-label>
+                      <input matInput type="email" [(ngModel)]="email" email name="updateEmail"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        [readonly]="isUpdate == true ? 'false' : 'true'">
+                      <mat-icon matPrefix><i class="fa-regular fa-envelope"></i></mat-icon>
+
+                    </mat-form-field>
+                  </div>
+
+
+
+                  <!-- Day of Birth  -->
+                  <div class="username">
+                    <mat-form-field class="input-username w-100" appearance="outline">
+                      <mat-label>Day of birth </mat-label>
+                      <input matInput name="updateDob" id="date" [matDatepicker]="picker" [min]="minDate"
+                        [max]="maxDate" [readonly]="isUpdate == true ? 'false' : 'true'" [(ngModel)]="dob">
+                      <mat-datepicker-toggle matIconSuffix [for]="picker" *ngIf="isUpdate"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                      <mat-icon matPrefix><i class="fa-solid fa-calendar-days"></i></mat-icon>
+
+                    </mat-form-field>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="login-input">
+
+
+              <!-- Address -->
+              <div class="username">
+                <mat-form-field class="input-username w-100" appearance="outline">
+                  <mat-label>Address</mat-label>
+                  <input matInput type="text" name="updateAddress" [(ngModel)]="address"
+                    [readonly]="isUpdate == true ? 'false' : 'true'">
+                  <mat-icon matPrefix><i class="fa-solid fa-map-location-dot"></i></mat-icon>
+                </mat-form-field>
+              </div>
+
+
+              <!-- <div class="row" *ngIf="!isUpdate">
+                <hr>
+
+                <div class="">
+                  <h4 class="posttitle-text">Xin mật khẩu để thay đổi</h4>
+                </div>
+                <br>
+                <div class="col">
+                  <div class="login-input">
+                    <div class="password">
+                      <mat-form-field class="input-password w-100" appearance="outline">
+                        <mat-label>Mật khẩu</mat-label>
+                        <input matInput  name="txtPassword"  [(ngModel)]="password"
+                          [type]="hidePassword ? 'password' : 'text'">
+                        <mat-icon matPrefix><i class="fa-solid fa-key"></i></mat-icon>
+                        <button type="button" class="border-0 bg-body " mat-icon-button matSuffix
+                          (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'"
+                          [attr.aria-pressed]="hidePassword">
+                          <mat-icon matSuffix>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+
+
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+            </div>
+            <!-- <hr>
+            <div class="username w-100" *ngIf="!isUpdate">
+              <div class="text-center p-0 login-button-div w-100">
+                <button class="login-button btn  btn-block w-100 fa-lg  mb-3 fs-5" mat-raised-button
+                  (click)="checkPassword()" type="button">
+                  <span>
+                    <mat-icon>edit</mat-icon> Chỉnh sửa thông tin
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div class="username w-100" *ngIf="isUpdate">
+              <div class="text-center p-0 login-button-div w-100">
+                <button class="login-button btn btn-primary btn-block w-100 fa-lg gradient-custom-2 mb-3 fs-5"
+                  mat-raised-button type="submit">
+                  <span>
+                    Hoàn tất chỉnh sửa
+                  </span>
+                </button>
+              </div>
+            </div> -->
+
+          </div>
+          <div class="card-header border-0">
+            <div class="row w-100 m-0 p-0">
+              <div class="col-8 m-0 p-0">
+                <h4 class="posttitle-text mb-0">Commision</h4>
+              </div>
+            </div>
+          </div>
+          <div class="card-body pt-0">
+            <table class="table  table-hover mt-0" >
+              <thead class="table-light">
+                <tr class="fw-5">
+                  <th>ID</th>
+                  <th>Commission</th>
+                  <th>Commission Type</th>
+                  <th>Created Date</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr matRipple *ngFor="let post of comission | paginate:{
+                  id: 'paginationCommission',
+                  itemsPerPage: tableSizeCommission,
+                currentPage: pageCommission,
+                totalItems: countCommission
+                };
+                let i = index">
+                  <td >
+                    {{post.id}}
+                  </td>
+                  <td >
+                    {{post.commission}}
+                  </td>
+                  <td >
+                    {{post.commissionType}}
+                  </td>
+                  <td >
+                    {{post.createdDate}}
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+            <!-- pagination -->
+            <div class="row w-100">
+              <div class="col-sm-6">
+
+              </div>
+              <div class="col-sm-6 d-flex justify-content-center">
+                <pagination-controls id="paginationCommission" previousLabel="Prev" nextLabel="Next"
+                  (pageChange)="onTableDataChangeCommission($event)">
+                </pagination-controls>
+              </div>
+
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Add Balance -->
+    <div class="col-xl-9 col-lg-8">
+      <div class="card" *ngIf="showDiv.addBalance">
+
+        <div class="card-header">
+          <h1>Add Balance</h1>
+        </div>
+        <div class="card-row-addBalance">
+          <div>
+            <img src="/assets/images/logo-momo.png" class="logo-momo">
+          </div>
+          <div class="p-header-text">
+            <p>How much balance would you like to add?</p>
+          </div>
+          <div class="p-text">
+            <p>Type or select the amount below</p>
+          </div>
+          <div class="input-cash">
+            <mat-form-field class="cash-input" appearance="outline">
+              <mat-label>Cash</mat-label>
+              <span matPrefix> <i class="fa-solid fa-dong-sign"></i> &nbsp;</span>
+              <input type="number" matInput placeholder="1.000" [(ngModel)]="amount">
+            </mat-form-field>
+          </div>
+          <div class="total-cash">
+            <h2>Total: {{amount | currency:'VND'}}</h2>
+          </div>
+
+
+
+        </div>
+        <div class="button">
+          <button class="btn-denied" mat-raised-button>Cancel</button>
+          <button class="btn-accept" color="primary" mat-raised-button (click)="addMoney()">Submit</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

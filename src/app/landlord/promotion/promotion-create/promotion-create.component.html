@@ -1,0 +1,131 @@
+<section class="page">
+  <div class="login container  h-100 py-4">
+    <div class="login-row row mt-3 ">
+      <div class="login-col col-12 col-md-10 col-lg-9 col-xl-8">
+        <form (ngSubmit)="addItems(myForm)" #myForm="ngForm">
+          <div class="login-card card rounded  border-0 mb-4" >
+            <div class="login-card-body card-body  ">
+              <div class="login-text text-center w-100 ">
+                <h2>Create Promotion</h2>
+              </div>
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <!-- name -->
+                  <div class="username">
+                    <mat-form-field class="input-username w-100" appearance="outline">
+                      <mat-label>
+                        Name</mat-label>
+                      <input matInput type="text" required [(ngModel)]="name"
+                        [ngModelOptions]="{standalone: true}" name="txtname">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <!-- name -->
+                  <div class="username">
+                    <mat-form-field class="input-username w-100" appearance="outline">
+                      <mat-label>
+                        Percent</mat-label>
+                      <input matInput type="tel" required [(ngModel)]="discountPercent"
+                        [ngModelOptions]="{standalone: true}" name="txtpercent"
+                        pattern="^[0]\d{9}$" maxlength="2" minlength="1" >
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="row p-0 m-0 mb-2">
+                    <div class="col p-0">
+                      <div class="reg-input">
+                        <mat-form-field class="input-username w-100" appearance="outline">
+                          <mat-label>Enter a date range</mat-label>
+                          <mat-date-range-input [rangePicker]="picker" [min]="minDateStart" [max]="maxDate">
+                            <input matStartDate [(ngModel)]="startDate" name="startDate"
+                              [ngModelOptions]="{standalone: true}" placeholder="Start date">
+                            <input matEndDate [(ngModel)]="endDate" name="endDate"
+                              [ngModelOptions]="{standalone: true}" placeholder="End date">
+                          </mat-date-range-input>
+                          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-date-range-picker #picker></mat-date-range-picker>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <!-- Descriptiuon -->
+                  <div class="username">
+                    <mat-form-field class="input-username w-100" appearance="outline">
+                      <mat-label>
+                        Description</mat-label>
+                      <textarea matInput type="text" required [(ngModel)]="description"
+                        [ngModelOptions]="{standalone: true}" name="txtdescription"></textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6 ">
+                  <h5>Homestay</h5>
+                  <section class="example-section">
+                    <p class="m-0" *ngFor="let homestay of valueHomestay; let i = index">
+                      <mat-checkbox class="example-margin" [(ngModel)]="homestay.status" name="homestay{{i}}  "
+                        [ngModelOptions]="{standalone: true}" labelPosition="after" color="primary">
+                        {{homestay.name}}
+                      </mat-checkbox>
+                    </p>
+                  </section>
+                </div>
+                <div class="col-6">
+                  <h5>Block Homestay</h5>
+                  <section class="example-section">
+                    <p class="m-0" *ngFor="let bloc of valueBloc; let i = index">
+                      <mat-checkbox class="example-margin" [(ngModel)]="bloc.status" name="bloc{{i}}  "
+                        [ngModelOptions]="{standalone: true}" labelPosition="after" color="primary">
+                        {{bloc.name}}
+                      </mat-checkbox>
+                    </p>
+                  </section>
+                </div>
+              </div>
+              <hr>
+              <h5 class="text-start">Image Promotion</h5>
+              <div class="row">
+                <!-- col left -->
+                <div class="col">
+                  <div ngx-dropzone class="upload" [multiple]="false" [accept]="'image/*'"
+                    (change)="onSelect($event)" *ngIf="showDiv" [(ngModel)]="file"  [ngModelOptions]="{standalone: true}" name="image">
+                    <ngx-dropzone-label>
+                      <div>
+                        <i class="fas fa-cloud-upload-alt icon-upload"></i>
+                        <header>Drop files here or click to upload *</header>
+                      </div>
+                    </ngx-dropzone-label>
+                  </div>
+                  <div class="wrapper text-center" *ngFor="let f of files">
+                    <ngx-dropzone-image-preview class="image-preview overflow-hidden"
+                      ngProjectAs="ngx-dropzone-preview" [file]="f" [removable]="true"
+                      (removed)="onRemove(f)">
+                    </ngx-dropzone-image-preview>
+                    <ngx-dropzone-label ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files"
+                      (removed)="onRemove(f)">{{
+                      f.name }}</ngx-dropzone-label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="text-center pt-1  pb-1 login-button-div">
+            <button class="login-button btn btn-primary btn-block w-100 fa-lg gradient-custom-2 mb-3" mat-raised-button
+              type="submit" [disabled]="!myForm.valid">
+              Submit </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

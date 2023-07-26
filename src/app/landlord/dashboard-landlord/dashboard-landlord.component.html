@@ -1,0 +1,148 @@
+<div class="container">
+  <div class="col">
+    <div class="row row-header">
+      <!--  x4 -->
+      <!-- 1 -->
+      <div class="header col-xl-4 col-xxl-4 col-md-3 mb-2">
+        <div class="card">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col">
+                <p class="m-0">Total Profit</p>
+                <div class="numbers">
+                  {{dashboardData.totalProfit}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer bot-red"></div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="header col-xl-4 col-xxl-4 col-md-3 mb-2">
+        <div class="card">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col">
+                <p class="m-0">Total Promotion</p>
+                <div class="numbers">
+                  {{dashboardData.totalPromotion}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer bot-blue"></div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="header col-xl-4 col-xxl-4 col-md-3 mb-2">
+        <div class="card">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col">
+                <p class="m-0">Total Commission</p>
+                <div class="numbers">
+                  {{dashboardData.totalCommission}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer bot-yellogreen"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <mat-tab-group class="mb-5">
+      <mat-tab label="Homestay - {{dashboardData.homestayTable.length}}">
+        <table class="table table-striped table-hover">
+          <thead >
+            <tr class="fw-medium fs-6">
+              <td class="text-center">No.</td>
+              <td>Image</td>
+              <td>Name</td>
+              <td class="text-center">Total Booking</td>
+              <td class="text-center">Profit</td>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of dashboardData.homestayTable| paginate:{
+                id: 'paginationHomestay',
+                itemsPerPage: tableSizeHomestay,
+            currentPage: pageHomestay,
+            totalItems: countHomestay
+            }; index as index"
+            [style.cursor]="'pointer'" routerLink="../Homestay/HomestayDetail"
+                  (click)="onItemSelector(data.name)"
+                  >
+              <td class="text-center">{{index + 1}}</td>
+              <td>
+                <img [src]="data.imgUrl" alt="" style="width: 45px; height: 45px" class="rounded" />
+              </td>
+              <td>{{data.name}}</td>
+              <td class="text-center">{{data.totalBooking}}</td>
+              <td class="text-center">{{data.profit}}</td>
+
+            </tr>
+          </tbody>
+        </table>
+        <!-- pagination -->
+        <div class="row w-100">
+          <div class="col-sm-6">
+          </div>
+          <div class="col-sm-6 d-flex justify-content-center">
+            <pagination-controls id="paginationHomestay" previousLabel="Prev" nextLabel="Next"
+              (pageChange)="onTableDataChangeHomestay($event)">
+            </pagination-controls>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Block Homestay - {{dashboardData.blocTable.length}}">
+        <table class="table table-striped table-hover">
+          <thead >
+            <tr class="fw-medium fs-6">
+              <td class="text-center">No.</td>
+              <td>Image</td>
+              <td>Name</td>
+              <td class="text-center">Total Booking</td>
+              <td class="text-center">Profit</td>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let data of dashboardData.blocTable| paginate:{
+              id: 'paginationBloc',
+              itemsPerPage: tableSizeBloc,
+          currentPage: pageBloc,
+          totalItems: countBloc
+          }; index as index"
+          [style.cursor]="'pointer'" routerLink="../BlockHomestay/BlockHomestayDetail"
+                  (click)="onItemSelector(data.name)">
+              <td class="text-center">{{index + 1}}</td>
+              <td>
+                <img [src]="data.imgUrl" alt="" style="width: 45px; height: 45px" class="rounded" />
+              </td>
+              <td>{{data.name}}</td>
+              <td class="text-center">{{data.totalBooking}}</td>
+              <td class="text-center">{{data.profit}}</td>
+
+            </tr>
+          </tbody>
+        </table>
+         <!-- pagination -->
+         <div class="row w-100">
+          <div class="col-sm-6">
+          </div>
+          <div class="col-sm-6 d-flex justify-content-center">
+            <pagination-controls id="paginationBloc" previousLabel="Prev" nextLabel="Next"
+              (pageChange)="onTableDataChangeBloc($event)">
+            </pagination-controls>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

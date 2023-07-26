@@ -1,0 +1,150 @@
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fccb90;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #FFCE03, #FD9A01, #FD6104, #FF2C05);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #FFCE03, #FD9A01, #FD6104, #FF2C05);
+}
+
+.btn-register {
+  color: white !important;
+  font-weight: 500;
+}
+
+.li-login {
+
+  border-radius: 5px;
+  width: fit-content;
+
+  button {
+    color: rgb(1, 148, 243);
+    font-family: MuseoSans, Roboto, sans-serif !important;
+    font-size: 20px;
+    letter-spacing: 0.7px;
+    font-weight: 500;
+
+  }
+}
+
+.logo {
+  width: 200px;
+}
+
+@media (min-width: 992px) {
+  .content-container {
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 30%, rgba(255, 255, 255, 0.8) 44%, rgba(255, 255, 255, 0.4) 56%, rgba(255, 255, 255, 0) 68%);
+  }
+}
+
+.footer {
+  background-image: url(/assets/images/bg.jpg);
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .logo {
+    width: 80px;
+  }
+}
+.main-content{
+  min-height: 80vh !important;
+}
+
+.body-content {
+  min-height: 74vh;
+
+  .body {
+    max-width: 100vw;
+    min-height: 62vh;
+    align-items: center;
+
+    .row {
+      max-width: 99vw;
+    }
+
+    .image {
+      margin-top: 2rem;
+
+
+
+      img {
+        width: 27rem;
+
+      }
+    }
+
+    .content {
+      padding-top: 4rem;
+
+      .text {
+
+        width: fit-content;
+      }
+
+      .content-input {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+
+
+
+        input {
+          height: 2.5rem;
+          width: 21rem;
+
+          font-size: 1.1rem;
+          font-weight: 500;
+          border: none;
+          outline: none;
+        }
+
+        .bottom-bar {
+          background-color: cyan;
+          border-color: none;
+          border-radius: 0.5rem;
+          width: 21rem;
+          height: 0.1rem;
+        }
+
+        .input-btn {
+          margin-top: 2rem;
+
+          .btn {
+            background-color: #0d6efd;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            width: 21rem;
+          }
+
+          .btn:hover {
+            background-color: #64B5F6;
+          }
+        }
+
+        .login {
+          width: 21rem;
+          text-align: center;
+          margin-top: 1rem;
+
+          .login-link {
+            text-decoration: none;
+
+          }
+
+
+        }
+      }
+    }
+
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}

@@ -1,0 +1,214 @@
+<div class="wrapper">
+  <div class="container pt-5 mb-3">
+    <div class="container-fluid">
+      <div class="header">
+        <h1>Check-In / Check-Out</h1>
+      </div>
+      <div class="row">
+        <div class="col  ">
+          <div class="body card mb-4">
+            <mat-tab-group>
+              <!-- CheckIn -->
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  Check-In
+                </ng-template>
+                <form (ngSubmit)="searchCheckIn()">
+                <div class="input-group mt-3 pe-3">
+                  <span class="input-group-text border-0" id="search-addon"><i class="fas fa-search"></i></span>
+                  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                    aria-describedby="search-addon" [(ngModel)]="searchCheckInInput" name="searchInput" [ngModelOptions]="{standalone: true}"/>
+                  <button class="btn btn-outline-primary" type="submit" id="button-addon2" mdbRipple
+                    rippleColor="danger">
+                    Search
+                  </button>
+                </div>
+              </form>
+                <table class="table  table-hover mt-2" style="height:60vh">
+                  <thead class="table-light">
+                    <tr class="fw-5">
+                      <th>ID</th>
+                      <th>Code</th>
+                      <th class="text-center">From</th>
+                      <th class="text-center">To</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr matRipple *ngFor="let post of valuesCheckIn | paginate:{
+                      id: 'paginationCheckIn',
+                      itemsPerPage: tableSizeCheckIn,
+                    currentPage: pageCheckIn,
+                    totalItems: countCheckIn
+                    };
+                    let i = index">
+                      <td [style.cursor]="'pointer'"
+                        (click)=" openBooking(post.code ,'ci')">
+                        {{post.id}}
+                      </td>
+                      <td [style.cursor]="'pointer'"
+                        (click)=" openBooking(post.code,'ci')">
+                        {{post.code}}
+                      </td>
+                      <td [style.cursor]="'pointer'"
+                        (click)=" openBooking(post.code,'ci')" class="text-center">
+                        {{post.bookingFrom}}
+                      </td>
+                      <td [style.cursor]="'pointer'"
+                        (click)=" openBooking(post.code,'ci')" class="text-center">
+                        {{post.bookingTo}}
+                      </td>
+
+
+                    </tr>
+
+
+                    <tr *ngIf="valuesCheckIn.length < 1">
+                      <td></td>
+                      <td> </td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr *ngIf="valuesCheckIn.length < 2">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr *ngIf="valuesCheckIn.length < 3">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr *ngIf="valuesCheckIn.length < 4">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr *ngIf="valuesCheckIn.length < 5">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- pagination -->
+                <div class="row w-100">
+                  <div class="col-sm-6">
+
+                  </div>
+                  <div class="col-sm-6 d-flex justify-content-center">
+                    <pagination-controls id="paginationCheckIn" previousLabel="Prev" nextLabel="Next"
+                      (pageChange)="onTableDataChangeCheckIn($event)">
+                    </pagination-controls>
+                  </div>
+
+                </div>
+              </mat-tab>
+              <!-- Block -hometsay -->
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  Check-Out
+                </ng-template>
+                <form (ngSubmit)="searchCheckOut()">
+                  <div class="input-group mt-3 pe-3">
+                    <span class="input-group-text border-0" id="search-addon"><i class="fas fa-search"></i></span>
+                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                      aria-describedby="search-addon" [(ngModel)]="searchCheckOutInput" name="searchInput" [ngModelOptions]="{standalone: true}"/>
+                    <button class="btn btn-outline-primary" type="submit" id="button-addon2" mdbRipple
+                      rippleColor="danger">
+                      Search
+                    </button>
+                  </div>
+                </form>
+                <table class="table  table-hover mt-2" style="height:60vh">
+                  <thead class="table-light">
+                    <tr class="fw-5">
+                      <th>ID</th>
+                      <th>Code</th>
+                      <th class="text-center">From</th>
+                      <th class="text-center">To</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr matRipple *ngFor="let post of valuesCheckOut | paginate:{
+                      id: 'paginationCheckOut',
+                      itemsPerPage: tableSizeCheckOut,
+                    currentPage: pageCheckOut,
+                    totalItems: countCheckOut
+                    };
+                    let i = index">
+                      <td [style.cursor]="'pointer'"
+                        (click)=" openBooking(post.code,'co')">
+                        {{post.id}}
+                      </td>
+                      <td [style.cursor]="'pointer'"
+                        (click)=" openBooking(post.code,'co')">
+                        {{post.code}}
+                      </td>
+                      <td [style.cursor]="'pointer'" class="text-center"
+                        (click)=" openBooking(post.code,'co')">
+                        {{post.bookingFrom}}
+                      </td>
+                      <td [style.cursor]="'pointer'" class="text-center"
+                        (click)=" openBooking(post.code,'co')">
+                        {{post.bookingTo}}
+                      </td>
+
+                    </tr>
+
+
+                    <tr *ngIf="valuesCheckOut.length < 1">
+                      <td></td>
+                      <td> </td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr *ngIf="valuesCheckOut.length < 2">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr *ngIf="valuesCheckOut.length < 3">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr *ngIf="valuesCheckOut.length < 4">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr *ngIf="valuesCheckOut.length < 5">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- pagination -->
+                <div class="row w-100">
+                  <div class="col-sm-6">
+
+                  </div>
+                  <div class="col-sm-6 d-flex justify-content-center">
+                    <pagination-controls id="paginationCheckOut" previousLabel="Prev" nextLabel="Next"
+                      (pageChange)="onTableDataChangeCheckOut($event)">
+                    </pagination-controls>
+                  </div>
+
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

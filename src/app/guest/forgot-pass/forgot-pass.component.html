@@ -1,0 +1,269 @@
+<section class="vh-100 ">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col p-0">
+        <!-- Header -->
+        <nav class="navbar sticky-top navbar-expand-sm bg-white p-0 mb-2 ">
+          <div class="container-fluid">
+            <a class="navbar-brand" routerLink="/Homepage">
+              <img class="logo" src="/assets/images/logo-2.png">
+            </a>
+            <div class=""></div>
+            <div>
+              <ul class="navbar-nav me-auto  mb-lg-0">
+                <li class="nav-item mx-4 li-login d-flex align-items-center">
+                  <button mat-button class="nav-link active fs-5" routerLink="/Login">Login</button>
+                  <!-- <a class="nav-link active fs-5" aria-current="page" href="#">Login</a> -->
+                </li>
+                <li class="nav-item d-flex align-items-center">
+                  <button mat-raised-button routerLink="/Register"
+                    class="btn-register btn btn-primary btn-block w-100 fa-lg gradient-custom-2 ">Register Your
+                    Accommodation</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div class="container-fluid w-100 main-content">
+          <div class="body-content">
+            <mat-stepper linear #stepper>
+              <!-- step 1 input username email -->
+              <mat-step>
+                <ng-template matStepLabel>Step 1</ng-template>
+                <div class="body">
+                  <div class="row">
+                    <div class="image col-6 d-none d-sm-block">
+                      <div class="d-flex justify-content-end">
+                        <img class="img-fluid"
+                          src="https://img.freepik.com/premium-vector/forgot-password-account-login-web-page-protection-security-key-access-system-smartphone-computer-flat-vector-illustration_2175-1401.jpg?" />
+                      </div>
+                    </div>
+                    <div class="content col-12 col-sm-6 align-items-center d-flex justify-content-center">
+                      <div class="">
+                        <div class="text">
+                          <h1>Forgot</h1>
+                          <h1>Your Password?</h1>
+                        </div>
+                        <div class="content-input">
+                          <!-- form submit -->
+                          <form (ngSubmit)="getOtp()">
+                            <div>
+                              <input type="text" placeholder="Email or Username" [(ngModel)]="username" matInput
+                                required name="username " />
+                            </div>
+                            <div class="bottom-bar"></div>
+                            <div class="input-btn">
+                              <button type="submit" class="btn" matStepperNext [disabled]="!username">GET OTP</button>
+                            </div>
+                            <div class="login">
+                              <a routerLink="/Login" routerLinkActive="active" class="login-link">Back to signin</a>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-step>
+              <!-- Step 2 OTP -->
+              <mat-step>
+                <ng-template matStepLabel>Step 2</ng-template>
+                <div class="body">
+                  <div class="row">
+                    <div class="image col">
+                      <img
+                        src="https://img.freepik.com/free-vector/enter-otp-concept-illustration_114360-7897.jpg?t=st=1657717547~exp=1657718147~hmac=759ee225b9e2895114ff4909c8e76b606d9a95a00079db0f7da5993233a5adb6"
+                        alt="Verify OTP" />
+                    </div>
+                    <div class="content col">
+                      <div class="text">
+                        <h1>Verify OTP</h1>
+                      </div>
+                      <div class="content-input">
+                        <!-- form submit -->
+                        <form (ngSubmit)="inputOtp()">
+                          <div>
+                            <input required type="text" name="otp" placeholder="Enter the OTP" [(ngModel)]="otp" />
+                          </div>
+                          <div class="bottom-bar"></div>
+                          <div class="input-btn">
+                            <button type="submit" class="btn" [disabled]="!otp">Verify</button>
+                          </div>
+                          <div class="login">
+                            <a href="#" class="login-link">Resend again</a>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-step>
+              <!-- Step 3 input password -->
+              <mat-step>
+                <ng-template matStepLabel>Step 3</ng-template>
+                <div class="body">
+                  <div class="row">
+                    <div class="image col">
+                      <img
+                        src="https://img.freepik.com/free-vector/reset-password-concept-illustration_114360-7886.jpg?t=st=1657718237~exp=1657718837~hmac=0bf8a5d8377f087038cf06655c664af2db33e32c77767d3e6342936cce2fcb13"
+                        alt="New Password" />
+                    </div>
+                    <div class="content col">
+                      <div class="text">
+                        <h1>Reset</h1>
+                        <h1>Password</h1>
+                      </div>
+                      <div class="content-input">
+                        <!-- form submit -->
+                        <form (ngSubmit)="inputPassword()">
+                          <div>
+                            <input required type="password" placeholder="New Password" [(ngModel)]="newPassword"
+                              name="newpass" />
+                          </div>
+                          <div class="bottom-bar"></div>
+                          <div style="margin-top: 1.2rem;">
+                            <input required type="password" placeholder="Comfirm Password" [(ngModel)]="comfirmPassword"
+                              name="comfirm" />
+                          </div>
+                          <div class="bottom-bar"></div>
+                          <div class="input-btn">
+                            <button type="submit" class="btn" [disabled]="!newPassword && !comfirmPassword">Reset
+                              Password</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-step>
+            </mat-stepper>
+          </div>
+        </div>
+        <!-- Footer -->
+        <footer class="text-center text-lg-start bg-3 bg-light  text-white footer">
+          <!-- Section: Social media -->
+          <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+              <span></span>
+            </div>
+            <!-- Left -->
+
+            <!-- Right -->
+            <div>
+              <a href="" class="me-4 text-reset">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="" class="me-4 text-reset">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="" class="me-4 text-reset">
+                <i class="fab fa-google"></i>
+              </a>
+              <a href="" class="me-4 text-reset">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="" class="me-4 text-reset">
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="" class="me-4 text-reset">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <!-- Right -->
+          </section>
+          <!-- Section: Social media -->
+
+          <!-- Section: Links  -->
+          <section class="">
+            <div class="container text-center text-md-start mt-5">
+              <!-- Grid row -->
+              <div class="row mt-3">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                  <!-- Content -->
+                  <h6 class="text-uppercase mb-4">
+                    <img class="logo" src="/assets/images/logo.png"><span class="logo-text">STAYWITHME</span>
+                  </h6>
+                  <p>
+
+                  </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <!-- <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+          <h6 class="text-uppercase fw-bold mb-4">
+            Dịch vụ
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Tắm rửa</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Spa</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Tỉa lông</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">...</a>
+          </p>
+        </div> -->
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <!-- <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+          <h6 class="text-uppercase fw-bold mb-4">
+            Danh mục
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Trang chủ</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Dịch vụ</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Sản phẩm</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Nhận nuôi</a>
+          </p>
+        </div> -->
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                  <!-- Links -->
+                  <h6 class="text-uppercase fw-bold mb-4">
+                    Liên hệ
+                  </h6>
+                  <p><i class="fas fa-home me-3"></i> Công nghệ cao, TP.HCM</p>
+                  <p>
+                    <i class="fas fa-envelope me-3"></i>
+                    Staywithme@mail.com
+                  </p>
+                  <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                  <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                </div>
+                <!-- Grid column -->
+              </div>
+              <!-- Grid row -->
+            </div>
+          </section>
+          <!-- Section: Links  -->
+
+          <!-- Copyright -->
+          <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2023 Copyright:
+            <a class="text-reset fw-bold" routerLink="/Home">Staywithme.com</a>
+          </div>
+          <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+      </div>
+
+    </div>
+  </div>
+</section>

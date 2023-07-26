@@ -1,0 +1,194 @@
+<div class="wrapper">
+  <div class="container pt-5 mb-3">
+    <div class="container-fluid">
+      <div class="header">
+        <h1>Booking </h1>
+      </div>
+      <div class="row">
+        <div class="col  ">
+          <div class="body card mb-4">
+            <mat-tab-group>
+              <!-- Hometsay -->
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  <span [matBadgeHidden]="valuesHomestay.length == 0" matBadge="!" matBadgePosition="after"
+                    matBadgeOverlap="false" matBadgeColor="warn" matBadgeSize="small">Homestay</span>
+                </ng-template>
+                <table class="table  table-hover mt-2" style="height:60vh">
+                  <thead class="table-light">
+                    <tr class="fw-5">
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th class="text-center">Booking</th>
+                      <th>View</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr matRipple *ngFor="let post of valuesHomestay | paginate:{
+                      id: 'paginationHomestay',
+                      itemsPerPage: tableSizeHomestay,
+                    currentPage: pageHomestay,
+                    totalItems: countHomestay
+                    };
+                    let i = index">
+                      <td [style.cursor]="'pointer'" routerLink="../Homestay/HomestayDetail"
+                        (click)="onItemSelector(post.id, post.name)">
+                        {{post.id}}
+                      </td>
+                      <td [style.cursor]="'pointer'" routerLink="../Homestay/HomestayDetail"
+                        (click)="onItemSelector(post.id, post.name)">
+                        {{post.name}}
+                      </td>
+                      <td [style.cursor]="'pointer'" routerLink="../Homestay/HomestayDetail"
+                        (click)="onItemSelector(post.id, post.name)" class="text-center">
+                        <span *ngIf="post.isPendingBooking" class="text-danger fs-5 "> ! </span>
+                      </td>
+
+                      <td class="pt-0">
+                        <button routerLink="../Homestay/HomestayDetail" mat-icon-button color="primary"
+                          (click)="onItemSelector(post.id, post.name);"><mat-icon> visibility</mat-icon></button>
+                      </td>
+                    </tr>
+
+
+                    <tr *ngIf="valuesHomestay.length < 1">
+                      <td></td>
+                      <td> </td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr *ngIf="valuesHomestay.length < 2">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr *ngIf="valuesHomestay.length < 3">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr *ngIf="valuesHomestay.length < 4">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr *ngIf="valuesHomestay.length < 5">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- pagination -->
+                <div class="row w-100">
+                  <div class="col-sm-6">
+
+                  </div>
+                  <div class="col-sm-6 d-flex justify-content-center">
+                    <pagination-controls id="paginationHomestay" previousLabel="Prev" nextLabel="Next"
+                      (pageChange)="onTableDataChangeHomestay($event)">
+                    </pagination-controls>
+                  </div>
+
+                </div>
+              </mat-tab>
+              <!-- Block -hometsay -->
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  <span [matBadgeHidden]="valuesBloc.length == 0" matBadge="!" matBadgePosition="after"
+                    matBadgeOverlap="false" matBadgeColor="warn" matBadgeSize="small">Block-Homestay</span>
+                </ng-template>
+
+                <table class="table  table-hover mt-2" style="height:60vh">
+                  <thead class="table-light">
+                    <tr class="fw-5">
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th class="text-center">Booking</th>
+                      <th>View</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr matRipple *ngFor="let post of valuesBloc | paginate:{
+                      id: 'paginationBloc',
+                      itemsPerPage: tableSizeBloc,
+                    currentPage: pageBloc,
+                    totalItems: countBloc
+                    };
+                    let i = index">
+                      <td [style.cursor]="'pointer'" routerLink="../BlockHomestay/BlockHomestayDetail"
+                        (click)="onItemSelector(post.id, post.name)">
+                        {{post.id}}
+                      </td>
+                      <td [style.cursor]="'pointer'" routerLink="../BlockHomestay/BlockHomestayDetail"
+                        (click)="onItemSelector(post.id, post.name)">
+                        {{post.name}}
+                      </td>
+                      <td [style.cursor]="'pointer'" routerLink="../BlockHomestay/BlockHomestayDetail"
+                        (click)="onItemSelector(post.id, post.name)" class="text-center">
+                        <span *ngIf="post.isPendingBooking" class="text-danger fs-5">!</span>
+                      </td>
+
+                      <td class="pt-0">
+                        <button routerLink="../BlockHomestay/BlockHomestayDetail" mat-icon-button color="primary"
+                          (click)="onItemSelector(post.id, post.name);"><mat-icon> visibility</mat-icon></button>
+                      </td>
+                    </tr>
+
+
+                    <tr *ngIf="valuesBloc.length < 1">
+                      <td></td>
+                      <td> </td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr *ngIf="valuesBloc.length < 2">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr *ngIf="valuesBloc.length < 3">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr *ngIf="valuesBloc.length < 4">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr *ngIf="valuesBloc.length < 5">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- pagination -->
+                <div class="row w-100">
+                  <div class="col-sm-6">
+
+                  </div>
+                  <div class="col-sm-6 d-flex justify-content-center">
+                    <pagination-controls id="paginationBloc" previousLabel="Prev" nextLabel="Next"
+                      (pageChange)="onTableDataChangeBloc($event)">
+                    </pagination-controls>
+                  </div>
+
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

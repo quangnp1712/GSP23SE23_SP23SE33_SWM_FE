@@ -1,0 +1,353 @@
+<div class="container-fluid">
+  <div class="header">
+    <h1>Homestay Management</h1>
+  </div>
+
+  <div class="row">
+    <div class="col col ">
+      <div class="body card mb-4">
+        <mat-tab-group>
+          <!-- Pending -->
+          <mat-tab label="Pending">
+
+
+            <table class="table table-striped table-hover mt-2" style="height:60vh">
+              <thead class="">
+                <tr class="">
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Date</th>
+                  <th>Accept / Reject</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr matRipple *ngFor="let post of valuesPending | paginate:{
+                  id: 'paginationPending',
+                  itemsPerPage: tableSizePending,
+              currentPage: pagePending,
+              totalItems: countPending
+              };
+              let i = index" >
+                  <td [style.cursor]="'pointer'" routerLink="HomestayDetail"
+                  (click)="onItemSelector(post.id, post.name)">{{post.id}}</td>
+                  <td [style.cursor]="'pointer'" routerLink="HomestayDetail"
+                  (click)="onItemSelector(post.id, post.name)">{{post.name}}</td>
+                  <td [style.cursor]="'pointer'" routerLink="HomestayDetail"
+                  (click)="onItemSelector(post.id, post.name)">{{post.createdDate}}</td>
+                  <!-- <td>
+                <button mat-icon-button color="primary" (click)="onItemSelector(post.id, post.username);"
+                  routerLink="/Admin/Request/RequestAccount" routerLinkActive="active"><i
+                    class="fa-solid fa-eye"></i></button>
+                <button mat-icon-button color="accent" (click)="onItemSelector(post.id, post.username);"
+                  (click)="accept()"><i class="fa-solid fa-check"></i></button>
+                <button mat-icon-button color="warn" (click)="onItemSelector(post.id, post.username);"
+                  (click)="reject()"><i class="fa-solid fa-xmark"></i></button>
+
+              </td> -->
+                  <td class="">
+                      <button mat-icon-button color="accent" (click)="onItemSelector(post.id, post.name);"
+                      (click)="accept()"><i class="fa-solid fa-check"></i></button>
+                    <button mat-icon-button color="warn" (click)="onItemSelector(post.id, post.name);"
+                      (click)="openDialogAction()"><i class="fa-solid fa-xmark"></i></button>
+                    </td>
+                </tr>
+
+
+                <tr *ngIf="valuesPending.length < 1">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngIf="valuesPending.length < 2">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngIf="valuesPending.length < 3">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngIf="valuesPending.length < 4">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngIf="valuesPending.length < 5">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- pagination -->
+            <div class="row w-100">
+              <div class="col-sm-6">
+
+              </div>
+              <div class="col-sm-6 d-flex justify-content-center">
+                <pagination-controls id="paginationPending"previousLabel="Prev" nextLabel="Next"
+                  (pageChange)="onTableDataChangePending($event)">
+                </pagination-controls>
+              </div>
+
+            </div>
+          </mat-tab>
+          <mat-tab label="Activated">
+            <table class="table table-striped table-hover" style="height:60vh">
+              <thead class="">
+                <tr class="">
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Date</th>
+                  <th>Banned</th>
+                </tr>
+              </thead>
+              <tbody style="height:30vh">
+                <tr *ngFor="let post of valuesActive | paginate:{
+                  id: 'paginationActive',
+                  itemsPerPage: tableSizeActive,
+            currentPage: pageActive,
+            totalItems: countActive}
+
+          ;
+          let i = index" >
+                  <td [style.cursor]="'pointer'" routerLink="HomestayDetail"
+                  (click)="onItemSelector(post.id, post.name)">{{post.id}}</td>
+                  <td [style.cursor]="'pointer'" routerLink="HomestayDetail"
+                  (click)="onItemSelector(post.id, post.name)">{{post.name}}</td>
+                  <td [style.cursor]="'pointer'" routerLink="HomestayDetail"
+                  (click)="onItemSelector(post.id, post.name)">{{post.createdDate}}</td>
+
+
+                  <td class="">
+                    <!-- <button mat-icon-button color="primary" (click)="onItemSelector(post.id, post.username);"
+                  routerLink="/Admin/Request/RequestAccount" routerLinkActive="active"><i
+                    class="fa-solid fa-eye"></i></button>
+                <button mat-icon-button color="accent" (click)="onItemSelector(post.id, post.username);"
+                  (click)="accept()"><i class="fa-solid fa-check"></i></button> -->
+                    <button mat-icon-button color="warn" (click)="onItemSelector(post.id, post.name);"
+                      (click)="openDialogAction()"><i class="fa-solid fa-xmark"></i></button>
+                  </td>
+                </tr>
+                <tr *ngIf="valuesActive.length < 1">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngIf="valuesActive.length < 2">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngIf="valuesActive.length < 3">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngIf="valuesActive.length < 4">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngIf="valuesActive.length < 5">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- pagination -->
+            <div class="row w-100">
+              <div class="col-sm-6">
+
+              </div>
+              <div class="col-sm-6 d-flex justify-content-center">
+                <pagination-controls id="paginationActive"previousLabel="Prev" nextLabel="Next"
+                  (pageChange)="onTableDataChangeActive($event)">
+                </pagination-controls>
+              </div>
+
+            </div>
+          </mat-tab>
+          <mat-tab label="Reject">
+            <table class="table table-striped table-hover" style="height:60vh">
+              <thead>
+                <tr class="">
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Date</th>
+                  <th>Active</th>
+                </tr>
+              </thead>
+              <tbody style="height:30vh">
+                <tr *ngFor="let post of valuesReject | paginate:{
+                  id: 'paginationReject',
+                  itemsPerPage: tableSizeReject,
+            currentPage: pageReject,
+            totalItems: countReject};
+            let i = index" >
+                  <td [style.cursor]="'pointer'" routerLink="HomestayDetail"
+                  (click)="onItemSelector(post.id, post.name)">{{post.id}}</td>
+                  <td [style.cursor]="'pointer'" routerLink="HomestayDetail"
+                  (click)="onItemSelector(post.id, post.name)">{{post.name}}</td>
+                  <td [style.cursor]="'pointer'" routerLink="HomestayDetail"
+                  (click)="onItemSelector(post.id, post.name)">{{post.createdDate}}</td>
+                  <td class="">
+                    <!-- <button mat-icon-button color="primary" (click)="onItemSelector(post.id, post.username);"
+                      routerLink="/Admin/Request/RequestAccount" routerLinkActive="active"><i
+                        class="fa-solid fa-eye"></i></button> -->
+                    <button mat-icon-button color="accent" (click)="onItemSelector(post.id, post.name);"
+                      (click)="accept()"><i class="fa-solid fa-check"></i></button>
+
+                  </td>
+                </tr>
+                <tr *ngIf="valuesReject.length < 1">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngIf="valuesReject.length < 2">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngIf="valuesReject.length < 3">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngIf="valuesReject.length < 4">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngIf="valuesReject.length < 5">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- pagination -->
+            <div class="row w-100">
+              <div class="col-sm-6">
+
+              </div>
+              <div class="col-sm-6 d-flex justify-content-center">
+                <pagination-controls id="paginationReject"previousLabel="Prev" nextLabel="Next"
+                  (pageChange)="onTableDataChangeReject($event)">
+                </pagination-controls>
+              </div>
+
+            </div>
+          </mat-tab>
+          <!-- <mat-tab label="Banned">
+            <table class="table table-striped table-hover" style="height:60vh">
+              <thead class="">
+                <tr class="">
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Date</th>
+                  <th>Accept Action</th>
+                </tr>
+              </thead>
+              <tbody style="height:30vh">
+                <tr *ngFor="let post of valuesBanned | paginate:{
+            itemsPerPage: tableSize,
+            currentPage: page,
+            totalItems: count}
+
+          ;
+          let i = index" >
+                  <td [style.cursor]="'pointer'" routerLink="HomestayDetail"
+                  (click)="onItemSelector(post.id, post.name)">{{post.id}}</td>
+                  <td [style.cursor]="'pointer'" routerLink="HomestayDetail"
+                  (click)="onItemSelector(post.id, post.name)">{{post.name}}</td>
+                  <td [style.cursor]="'pointer'" routerLink="HomestayDetail"
+                  (click)="onItemSelector(post.id, post.name)">{{post.createdDate}}</td>
+
+
+                  <td class="">
+                     <button mat-icon-button color="primary" (click)="onItemSelector(post.id, post.username);"
+                      routerLink="/Admin/Request/RequestAccount" routerLinkActive="active"><i
+                        class="fa-solid fa-eye"></i></button>
+                    <button mat-icon-button color="accent" (click)="onItemSelector(post.id, post.name);"
+                      (click)="accept()"><i class="fa-solid fa-check"></i></button>
+                     <button mat-icon-button color="warn" (click)="onItemSelector(post.id, post.username);"
+                      (click)="reject()"><i class="fa-solid fa-xmark"></i></button>
+                  </td>
+                </tr>
+                <tr *ngIf="valuesBanned.length < 1">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngIf="valuesBanned.length < 2">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngIf="valuesBanned.length < 3">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngIf="valuesBanned.length < 4">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngIf="valuesBanned.length < 5">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+             pagination
+            <div class="row w-100">
+              <div class="col-sm-6">
+
+              </div>
+              <div class="col-sm-6 d-flex justify-content-center">
+                <pagination-controls previousLabel="Prev" nextLabel="Next"
+                  (pageChange)="onTableDataChangeBanned($event)">
+                </pagination-controls>
+              </div>
+
+            </div>
+          </mat-tab> -->
+
+
+
+
+        </mat-tab-group>
+
+      </div>
+    </div>
+
+  </div>
+
+
+</div>

@@ -1,0 +1,225 @@
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fccb90;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #FFCE03, #FD9A01, #FD6104, #FF2C05);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #FFCE03, #FD9A01, #FD6104, #FF2C05);
+}
+
+.btn-register {
+  color: white !important;
+  font-weight: 500;
+}
+
+.li-login {
+
+  border-radius: 5px;
+  width: fit-content;
+
+  button {
+    color: rgb(1, 148, 243);
+    font-family: MuseoSans, Roboto, sans-serif !important;
+    font-size: 20px;
+    letter-spacing: 0.7px;
+
+
+  }
+}
+
+.navbar{
+  height: 9vh;
+  max-height: 9vh;
+}
+.navbar-brand {
+  .logo {
+    width: 200px;
+  }
+}
+
+
+
+.first-content {
+
+  min-height: 91vh;
+  height: 91vh;
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.8) 30%, rgba(255, 255, 255, 0.7) 35%, rgba(255, 255, 255, 0.4) 60%, rgba(255, 255, 255, 0) 100%), url(/assets/images/bg-login.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  img {
+    object-fit: cover;
+  }
+
+  .content-container {
+    .content-box {
+      max-width: 1280px;
+      .content {
+        max-width: 640px;
+
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (min-width:768px) {
+  .latest-content {
+    height: 400px;
+  }
+}
+
+
+
+.password,
+.username {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+.login-button-div {
+  margin-top: -30px;
+  button {
+    height: 45px;
+  }
+
+  .login-button {
+    font-size: large;
+    letter-spacing: 2px;
+    color: white;
+
+  }
+
+}
+
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fccb90;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #FEF001, #FFCE03, #FD9A01, #FD6104, #FF2C05);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #FEF001, #FFCE03, #FD9A01, #FD6104, #FF2C05);
+}
+
+.gradient-text-1 {
+  /* fallback for old browsers */
+  background: #dc2743;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-2 {
+  /* fallback for old browsers */
+  background: #dc2743;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(90deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(90deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+  }
+}
+
+.gmail-button {
+  color: white !important;
+}
+
+.login-card {
+  background: linear-gradient(150deg, #FFE753, #FFE367, #FFF7A7, #FFAD5E);
+}
+
+.login-body {
+
+  // logo login
+  .logo {
+    width: 40%;
+  }
+}
+
+
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  width: 50% !important;
+}
+
+.login-gmail::before {
+  content: "";
+  position: absolute;
+  width: 42%;
+  height: 1px;
+  background-color: #00000070;
+  border-radius: 1rem;
+  top: 50%;
+  left: 2%;
+}
+
+.login-gmail::after {
+  content: "";
+  position: absolute;
+  width: 42%;
+  height: 1px;
+  background-color: #00000070;
+  border-radius: 1rem;
+  top: 50%;
+  right: 2%;
+}
+
+.login-gmail {
+  float: left;
+
+
+  span {
+
+    display: inline-block;
+    padding: 1px 20px;
+    z-index: 1;
+
+    font-size: 16px;
+    color: #876d6d;
+    text-transform: capitalize;
+  }
+}
+
+.col.p-0{
+  overflow: unset;
+}
+.body-page{
+  overflow: unset;
+}

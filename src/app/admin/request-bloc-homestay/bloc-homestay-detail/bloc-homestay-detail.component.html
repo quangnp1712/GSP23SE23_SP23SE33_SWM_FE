@@ -1,0 +1,430 @@
+<div class="container pt-5 mb-3">
+  <div class="row w-100 justify-content-center">
+    <div class="col-10">
+      <a class="mb-3 text-black" routerLink="../">
+        <i class="fa-solid fa-arrow-left-long"></i> <span class="ms-2">Block_Homestay</span>
+      </a>
+      <div class="card-header border-0">
+        <div class="row w-100 m-0 p-0">
+          <div class="col-10 m-0 p-0">
+            <h1 class="">{{datas.name}}</h1>
+            <i class="fa-solid fa-location-dot"></i>
+            <span class="ms-2">{{datas.address}} </span>
+
+          </div>
+          <div class="col-2 m-0 p-0">
+            <div>
+              <small *ngIf="datas.status =='ACTIVATING'"
+                class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">{{datas.status}}</small>
+              <small *ngIf="datas.status =='PENDING'"
+                class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2">{{datas.status}}</small>
+              <small *ngIf="datas.status =='REJECTED' "
+                class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-danger-emphasis bg-danger-subtle border border-danger-subtle rounded-2">{{datas.status}}</small>
+            </div>
+            <div class="d-flex flex-row justify-content-end ">
+              <button *ngIf="datas.status =='PENDING' || datas.status =='ACTIVATING'" mat-stroked-button class="border border-warning me-2" (click)="openDialogAction()" >Reject</button>
+              <button *ngIf="datas.status =='PENDING' || datas.status =='REJECTED'" mat-stroked-button class="border border-success" (click)="accept()">Accept</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- Image -->
+      <div class="card my-3">
+        <mat-grid-list cols="6" rowHeight="150px" class="mb-2">
+          <mat-grid-tile [colspan]="4" [rowspan]="2">
+            <div class="w-100 h-100 pe-2">
+              <div class="w-100 h-100" style="
+            background-size: cover;
+            background-position: center; " [style.background-image]="'url('+ urls[0] + ') '"></div>
+            </div>
+
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <div class="w-100 h-100 pb-1">
+              <div class="w-100 h-100" style="
+             background-size: cover;
+            background-position: center; " [style.background-image]=" 'url('+ urls[1] + ')' "></div>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <div class="w-100 h-100 pt-1">
+              <div class="w-100 h-100" style="
+            background-size: cover;
+            background-position: center; " [style.background-image]="'url('+ urls[2] + ')'"></div>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+
+        <div class="row w-100 m-0 ">
+          <div class="col-3 p-0" *ngFor="let url of urls4">
+            <div class="w-100 pe-1 overflow-hidden" style="height:90px"><img [src]="url" class=" img-fluid w-100 h-100"
+                style="object-fit: cover;"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Basic information  -->
+      <div class="card my-3">
+        <div class="card">
+          <div class="card-header">
+            <div class="row w-100 m-0 p-0">
+              <div class="col-8 m-0 p-0">
+                <h4 class="posttitle-text mb-0">Basic Information</h4>
+              </div>
+              <div class="col-4 m-0 p-0">
+
+              </div>
+            </div>
+
+          </div>
+          <div class="card-body">
+            <div class="row w-100 p-0 m-0">
+              <div class="col-9 m-0 p-0 pe-2">
+                <div class="row w-100 m-0 p-0">
+                  <div class="col m-0 p-0">
+                    <div class="row w-100 m-0 p-0">
+                      <div class="col-4 m-0 p-0">
+                        <span class="text-muted text-uppercase fs-7 text-break text-wrap">block homestay name</span>
+                      </div>
+                      <div class="col-8">
+                        <span> {{datas.name}} </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+
+                <div class="row w-100 m-0 p-0">
+                  <div class="col m-0 p-0">
+                    <div class="row w-100 m-0 p-0">
+                      <div class="col-4 m-0 p-0">
+                        <span class="text-muted text-uppercase">address</span>
+                      </div>
+                      <div class="col-8">
+                        <span> {{datas.address}} </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3 m-0 p-0">
+                <div class="w-100 overflow-hidden">
+                  <span class="text-muted text-uppercase">Homestay License</span>
+                  <img [src]="datas.businessLicense" class="img-fuild w-100 h-100 mt-2" style="object-fit: cover;">
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Home rule  -->
+      <div class="card my-3">
+        <div class="card">
+          <div class="card-header">
+            <div class="row w-100 m-0 p-0">
+              <div class="col-8 m-0 p-0">
+                <h4 class="posttitle-text mb-0">Home Rule</h4>
+              </div>
+              <div class="col-4 m-0 p-0">
+
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row w-100 p-0 m-0">
+              <div class="col m-0 p-0 pe-2">
+
+                <div class="row w-100 m-0 p-0">
+                  <div class="col-6 m-0 p-0">
+                    <div class="row w-100 m-0 p-0">
+                      <div class="col-6 m-0 p-0">
+                        <span class="text-muted text-uppercase">Check-in</span>
+                      </div>
+                      <div class="col-6">
+                        <span> 12:00</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 m-0 p-0">
+                    <div class="row w-100 m-0 p-0">
+                      <div class="col-6 m-0 p-0">
+                        <span class="text-muted text-uppercase">Check-out</span>
+                      </div>
+                      <div class="col-6">
+                        <span> 10:00</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+
+                <div class="row w-100 m-0 p-0">
+                  <div class="col m-0 p-0">
+                    <div class="row w-100 m-0 p-0">
+                      <div class="col-3 m-0 p-0">
+                        <span class="text-muted text-uppercase">allowed</span>
+                      </div>
+                      <div class="col-9">
+                        <div class="row w-100 p-0 m-0">
+                          <div class="col-3 p-0 m-0" *ngFor="let item of datas.homestayRules">{{item.description}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service  -->
+      <div class="card my-3">
+        <div class="card">
+          <div class="card-header">
+            <div class="row w-100 m-0 p-0">
+              <div class="col-8 m-0 p-0">
+                <h4 class="posttitle-text mb-0">Service</h4>
+              </div>
+              <div class="col-4 m-0 p-0">
+
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row w-100 p-0 m-0">
+              <div class="col m-0 p-0 pe-2">
+                <div class="row w-100 m-0 p-0">
+                  <div class="col-6 m-0 p-0" *ngFor="let item of datas.homestayServices ; let i = index">
+                    <hr *ngIf="i >1">
+                    <div class="row w-100 m-0 p-0">
+                      <div class="col-6 m-0 p-0">
+                        <span class="text-muted text-uppercase">{{item.name}} </span>
+                      </div>
+                      <div class="col-6">
+                        <span> {{item.price}} </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 m-0 p-0 " *ngIf="datas.homestayServices.length % 2 == 1 ">
+                    <hr>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Homestay  -->
+      <div class=" my-3">
+        <div class="card">
+          <div class="card-header">
+            <div class="row w-100 m-0 p-0">
+              <div class="col-8 m-0 p-0">
+                <h4 class="posttitle-text mb-0">Homestay</h4>
+              </div>
+              <div class="col-4 m-0 p-0">
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body p-0">
+
+          <mat-accordion class="example-headers-align w-100  " multi>
+            <mat-expansion-panel class="" *ngFor="let homestay of datas.homestays ; let i =index;">
+              <mat-expansion-panel-header class="">
+                <mat-panel-title class="fs-5">
+                  {{i+1}}. {{homestay.name}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  <mat-icon>home</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <!-- Basic information  -->
+              <div class="card mb-3">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="row w-100 m-0 p-0">
+                      <div class="col-8 m-0 p-0">
+                        <h5 class="posttitle-text mb-0">Basic Information</h5>
+                      </div>
+                      <div class="col-4 m-0 p-0">
+
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="card-body">
+                    <div class="row w-100 p-0 m-0">
+                      <div class="col m-0 p-0 pe-2">
+                        <div class="row w-100 m-0 p-0">
+                          <div class="col m-0 p-0">
+                            <div class="row w-100 m-0 p-0">
+                              <div class="col-4 m-0 p-0">
+                                <span class="text-muted text-uppercase fs-7 text-break text-wrap">block homestay
+                                  name</span>
+                              </div>
+                              <div class="col-8">
+                                <span> {{homestay.name}} </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr>
+
+                        <div class="row w-100 m-0 p-0">
+                          <div class="col-6 m-0 p-0">
+                            <div class="row w-100 m-0 p-0">
+                              <div class="col-6 m-0 p-0">
+                                <span class="text-muted text-uppercase">Available Rooms</span>
+                              </div>
+                              <div class="col-6">
+                                <span> {{homestay.availableRooms}} </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-6 m-0 p-0">
+                            <div class="row w-100 m-0 p-0">
+                              <div class="col-6 m-0 p-0">
+                                <span class="text-muted text-uppercase">Room Capacity</span>
+                              </div>
+                              <div class="col-6">
+                                <span> {{homestay.availableRooms}} </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+
+
+                  </div>
+                </div>
+              </div>
+              <!-- Price  -->
+              <div class="card my-3">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="row w-100 m-0 p-0">
+                      <div class="col-8 m-0 p-0">
+                        <h4 class="posttitle-text mb-0">Price</h4>
+                      </div>
+                      <div class="col-4 m-0 p-0">
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="row w-100 p-0 m-0">
+                      <div class="col m-0 p-0 pe-2">
+                        <div class="row w-100 m-0 p-0">
+                          <div class="col m-0 p-0">
+                            <div class="row w-100 m-0 p-0">
+                              <div class="col-4 m-0 p-0">
+                                <span class="text-muted text-uppercase">Price guests pay per night:</span>
+                              </div>
+                              <div class="col-8 m-0 p-0">
+                                <div class="d-flex flex-row justify-content-end">
+                                  <div class="">
+                                    <span class="text-success">{{homestay.price | currency:'VND'}} </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row w-100 m-0 p-0">
+                          <div class="col m-0 p-0">
+                            <div class="row w-100 m-0 p-0">
+                              <div class="col-6 m-0 p-0">
+                                <span class="">5.00% Staywithme.com commisson</span>
+                              </div>
+                              <div class="col-6 m-0 p-0">
+                                <div class="d-flex flex-row justify-content-end">
+                                  <div class="">
+                                    <span class="">Your earnings (including taxes): <span class="text-danger">
+                                        {{homestay.id |
+                                        currency:'VND' }} </span></span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- facility -->
+              <div class="card my-3">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="row w-100 m-0 p-0">
+                      <div class="col-8 m-0 p-0">
+                        <h4 class="posttitle-text mb-0">Facility</h4>
+                      </div>
+                      <div class="col-4 m-0 p-0">
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="row w-100 p-0 m-0">
+                      <div class="col m-0 p-0 pe-2">
+                        <div class="row w-100 m-0 p-0">
+                          <div class="col-6 m-0 p-0" *ngFor="let item of homestay.homestayFacilities ; let i = index">
+                            <hr *ngIf="i >1">
+                            <div class="row w-100 m-0 p-0">
+                              <div class="col-6 m-0 p-0">
+                                <span class="text-muted text-uppercase">{{item.name}} </span>
+                              </div>
+                              <div class="col-6">
+                                <span> {{item.quantity}} </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-6 m-0 p-0 " *ngIf="homestay.homestayFacilities.length % 2 == 1 ">
+                            <hr>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </mat-expansion-panel>
+
+
+          </mat-accordion>
+
+        </div>
+
+      </div>
+      <hr>
+      <div class="d-flex flex-row justify-content-center ">
+        <button *ngIf="datas.status =='PENDING' || datas.status =='ACTIVATING'" mat-stroked-button class="border border-warning me-2" (click)="openDialogAction()" >Reject</button>
+        <button *ngIf="datas.status =='PENDING' || datas.status =='REJECTED'" mat-stroked-button class="border border-success" (click)="accept()">Accept</button>
+      </div>
+
+
+
+    </div>
+  </div>

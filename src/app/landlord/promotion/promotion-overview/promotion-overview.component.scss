@@ -1,0 +1,114 @@
+.container {
+  min-height: 89vh;
+
+  .row-header {
+    margin: 30px 0;
+
+    .card-body {
+
+      padding: 16px 15px 16px;
+
+      .fa-solid,
+      .fa-coins {
+        font-size: 3em;
+      }
+    }
+  }
+
+  .profit{
+    .card-body{
+      padding: 16px 15px 16px;
+    }
+  }
+
+  .card {
+    box-shadow: 0 6px 10px -4px rgb(0 0 0 / 15%);
+    .numbers {
+      font-size: 2em;
+
+      p {
+        height: 45px;
+        font-size: 16px;
+        line-height: 1.4em;
+        word-break: break-word;
+      }
+      .inline{
+        line-height: 45px;
+      }
+    }
+
+    .card-footer {
+      padding: 0 6px 6px;
+      border-top: unset;
+    }
+  }
+
+  .chart {
+    .card {
+      margin-bottom: 30px;
+    }
+  }
+
+  .card-chart-detail {
+    .chart-header {
+      font-size: 16px;
+    }
+
+    .chart-money {
+      p {
+        font-size: 2em;
+      }
+
+    }
+
+    .pull-right {
+      float: right;
+      span{
+
+      border-radius: 1rem;
+      padding: 1px 6px;
+      }
+      .label-green{
+        background-color: yellowgreen;
+      }
+      .label-blue{
+        background-color: #18FFFF;
+      }
+      .label-red{
+        background-color: #EE6666;
+        padding: 1px 9px;
+      }
+
+    }
+
+
+     .yellowgreen{
+      border-left: 4px yellowgreen solid;
+    }
+    .blue{
+      border-left: 4px #18FFFF solid;
+    }
+     .red{
+      border-left: 4px #F50057 solid;
+    }
+  }
+}
+input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  .bot-organe{
+    border-bottom: 4px solid #ffc400;
+  }
+  .bot-red{
+    border-bottom: 4px solid #F50057;
+  }
+  .bot-yellogreen{
+    border-bottom: 4px solid yellowgreen;
+  }
+  .bot-blue{
+    border-bottom: 4px solid #18FFFF;
+  }

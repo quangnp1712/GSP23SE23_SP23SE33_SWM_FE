@@ -1,0 +1,71 @@
+.wrapper {
+  .container {
+    .container-fluid {
+      .content {
+        background-color: white;
+        min-height: 82vh;
+        padding: 2%;
+
+        .header-content {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          flex-wrap: nowrap;
+          margin-bottom: 10px;
+          justify-content: flex-end;
+          .text{
+            font-size: 16px;
+          }
+          .btn-register{
+            margin-left: 10px;
+          }
+        }
+
+        .main-content {
+          .col-sm-4{
+            margin-bottom: 20px;
+          }
+          .card {
+            padding: 2%;
+            .image{
+              max-width: 100%;
+              width: 100%;
+              max-height: 170px;
+              height: 170px;
+              display: contents;
+              text-align: center;
+              cursor: pointer;
+              img{
+                width: 99%;
+                height: 99%;
+                max-height: 170px;
+                min-height: 170px;
+              height: 170px;
+              cursor: pointer;
+              }
+            }
+            .name{
+              text-align: center;
+              font-size: 17px;
+              font-weight: 500;
+              margin: 2.5%;
+              cursor: pointer;
+            }
+            .button {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-evenly;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+  }

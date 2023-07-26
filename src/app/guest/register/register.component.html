@@ -1,0 +1,285 @@
+<section class="body-page">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col p-0 vh-100">
+        <!-- Header -->
+        <nav class="navbar sticky-top navbar-expand-sm bg-white p-0 ">
+          <div class="container-fluid">
+            <a class="navbar-brand" routerLink="/Homepage">
+              <img class="logo" src="/assets/images/logo-2.png">
+            </a>
+            <div class=""></div>
+            <div>
+              <ul class="navbar-nav me-auto  mb-lg-0">
+                <li class="nav-item mx-4 li-login d-flex align-items-center">
+                  <button mat-button class="nav-link active fs-5" routerLink="/Login">Login</button>
+                  <!-- <a class="nav-link active fs-5" aria-current="page" href="#">Login</a> -->
+                </li>
+                <li class="nav-item d-flex align-items-center">
+                  <button mat-raised-button routerLink="/Register"
+                    class="btn-register btn btn-primary btn-block w-100 fa-lg gradient-custom-2 ">Register Your
+                    Accommodation</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <!-- First content -->
+        <section class=" first-content overflow-auto">
+          <div class="">
+            <div class="content-container">
+              <div class="row w-100">
+                <div class="col">
+                  <div class="content-box">
+                    <div class="content">
+                      <div class="card border-0  login-card w-100">
+                        <div class="login-body card-body text-center ">
+                          <div class="ms-xl-4">
+                            <a routerLink="/Homepage"> <img class="logo" [src]="logoImageUrl"></a>
+                          </div>
+                          <div>
+                            <h3 class=" mb-3 pb-3 align-items-center gradient-text-2 fw-bold font-monospace fs-1"
+                              style="letter-spacing: 1px;">Register</h3>
+                          </div>
+                          <form (ngSubmit)="register()" #myForm="ngForm">
+                            <div class="register-input ">
+                              <h5 class="text-start ">Basic Information</h5>
+
+                              <div class="row">
+                                <!-- col left -->
+                                <div class="col-left col-12 col-md-6">
+                                  <!-- username -->
+                                  <div class="reg-input">
+                                    <mat-form-field class="input-username w-100" appearance="outline">
+                                      <mat-label>Username</mat-label>
+                                      <input matInput type="text" required [formControl]="usernameFormControl"
+                                        [errorStateMatcher]="matcher" name="txtUsername">
+                                      <mat-icon matPrefix><i class="fa-solid fa-user"></i></mat-icon>
+                                      <mat-error *ngIf="usernameFormControl.hasError('required')">
+                                        Username is <strong>required</strong>
+                                      </mat-error>
+                                    </mat-form-field>
+                                  </div>
+                                </div>
+                                <!-- col right -->
+                                <div class="col-right col-12 col-md-6">
+                                  <!-- Email -->
+                                  <div class="reg-input">
+                                    <mat-form-field class="input-username w-100" appearance="outline">
+                                      <mat-label>Email</mat-label>
+                                      <input matInput type="email"  email required
+                                        [formControl]="emailFormControl" [errorStateMatcher]="matcher" name="txtEmail">
+                                      <mat-icon matPrefix><i class="fa-regular fa-envelope"></i></mat-icon>
+                                      <mat-error [innerHTML]="getEmailErrorMessage()" *ngIf="emailFormControl.invalid">
+                                      </mat-error>
+                                    </mat-form-field>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- password -->
+                              <div class="row">
+                                <!-- col left -->
+                                <div class="col-left col-12 col-md-6">
+                                  <div class="reg-input ">
+                                    <mat-form-field class="input-password w-100" appearance="outline">
+                                      <mat-label>Password</mat-label>
+                                      <input matInput type="password" name="txtPassword" [formControl]="passwordFormControl"
+                                        [errorStateMatcher]="matcher" required="Please Enter Password"
+                                        [type]="hidePassword ? 'password' : 'text'" required>
+                                      <mat-icon matPrefix><i class="fa-solid fa-key"></i></mat-icon>
+                                      <button type="button" class="border-0 " mat-icon-button matSuffix
+                                        (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'"
+                                        [attr.aria-pressed]="hidePassword">
+                                        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                      </button>
+                                      <mat-error *ngIf="passwordFormControl.hasError('required')">
+                                        Password is <strong>required</strong>
+                                      </mat-error>
+                                    </mat-form-field>
+                                  </div>
+                                </div>
+                                <!-- col right -->
+                                <div class="col-right col-12 col-md-6">
+                                  <div class="reg-input ">
+                                    <mat-form-field class="input-password w-100" appearance="outline">
+                                      <mat-label>Confirm Password</mat-label>
+                                      <input matInput type="password" name="txtConfirmPassword"
+                                        [formControl]="confirmPasswordFormControl" [errorStateMatcher]="matcher"
+                                        [type]="hideConfirmPass ? 'password' : 'text'" required>
+                                      <mat-icon matPrefix><i class="fa-solid fa-key"></i></mat-icon>
+                                      <button type="button" class="border-0 " mat-icon-button matSuffix
+                                        (click)="hideConfirmPass = !hideConfirmPass" [attr.aria-label]="'Hide password'"
+                                        [attr.aria-pressed]="hideConfirmPass">
+                                        <mat-icon matSuffix>{{hideConfirmPass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                      </button>
+
+                                      <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">
+                                        Password Confirm is <strong>required</strong>
+                                      </mat-error>
+                                    </mat-form-field>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- address -->
+                              <div>
+                                <div class="reg-input">
+                                  <mat-form-field #formField class="input-username w-100" appearance="outline">
+                                    <mat-label>Address</mat-label>
+                                    <input matInput type="text"  [errorStateMatcher]="matcher"
+                                      name="txtAddress" [matAutocomplete]="auto" autocomplete="off" required
+                                      (input)="getAutocomplete($event)" [formControl]="addressFormControl"required
+                                      >
+
+                                      <mat-autocomplete #auto="matAutocomplete" >
+                                        <mat-option *ngFor="let place of predictions " [value]="place.description">
+                                          {{place.description}}
+                                        </mat-option>
+                                      </mat-autocomplete>
+
+                                    <mat-icon matPrefix><i class="fa-solid fa-map-location-dot"></i></mat-icon>
+                                    <mat-error *ngIf="addressFormControl.hasError('required')">
+                                      Address is <strong>required</strong>
+                                    </mat-error>
+                                  </mat-form-field>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <!-- col left -->
+                                <div class="col-left col-12 col-md-6">
+                                  <!-- ID National -->
+                                  <div class="reg-input">
+                                    <mat-form-field class="input-username w-100" appearance="outline">
+                                      <mat-label>ID National</mat-label>
+                                      <input matInput type="tel" pattern="[0-9]+" maxlength="15" minlength="10" [formControl]="idFormControl"
+                                        [errorStateMatcher]="matcher" name="txtID" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                      <mat-icon matPrefix><i class="fa-regular fa-address-card"></i></mat-icon>
+                                      <mat-error *ngIf="idFormControl.hasError('required')">
+                                        ID National is <strong>required</strong>
+                                      </mat-error>
+                                    </mat-form-field>
+                                  </div>
+                                </div>
+                                <!-- col right -->
+                                <div class="col-right col-12 col-md-6">
+                                  <!-- Day of Birth  -->
+                                  <div class="reg-input">
+                                    <mat-form-field class="input-username w-100" appearance="outline">
+                                      <mat-label>Day of Birth</mat-label>
+                                      <input matInput  [(ngModel)]="dob"  [errorStateMatcher]="matcher" name="txtDob"
+                                        id="date" [matDatepicker]="picker"  required [min]="minDate" [max]="maxDate">
+                                        <!-- onfocus="(this.type='date')" -->
+                                      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                      <mat-datepicker #picker></mat-datepicker>
+                                      <mat-icon matPrefix><i class="fa-solid fa-calendar-days"></i></mat-icon>
+                                      <mat-error *ngIf="dobFormControl.hasError('required')">
+                                        Day of Birth is <strong>required</strong>
+                                      </mat-error>
+                                    </mat-form-field>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <!-- col left -->
+                                <div class="col-left col-12 col-md-6">
+                                  <!-- Phone -->
+                                  <div class="reg-input">
+                                    <mat-form-field class="input-username w-100" appearance="outline">
+                                      <mat-label>Phone</mat-label>
+                                      <input matInput pattern="^[0]\d{9}$" maxlength="10" minlength="10" type="tel" [formControl]="phoneFormControl"
+                                        [errorStateMatcher]="matcher" name="txtPhone" required>
+                                      <mat-icon matPrefix><i class="fa-solid fa-phone"></i></mat-icon>
+                                      <mat-error *ngIf="phoneFormControl.hasError('required')">
+                                        Phone is <strong>required</strong>
+                                      </mat-error>
+                                    </mat-form-field>
+                                  </div>
+                                </div>
+                                <!-- col right -->
+                                <div class="col-right col-12 col-md-6">
+                                  <!-- Gender -->
+                                  <div class="reg-input">
+                                    <mat-form-field class="input-username w-100" appearance="outline">
+                                      <mat-label>Gender</mat-label>
+                                      <mat-icon matPrefix><i class="fa-solid fa-mars-and-venus"></i></mat-icon>
+                                      <mat-select placeholder="Gender" (ngModel)="gender" name="gender" required>
+                                        <mat-option value="Male">Male </mat-option>
+                                        <mat-option value="Female">Female </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                  </div>
+                                </div>
+                              </div>
+                              <br>
+                              <h5 class="text-start">Attachment</h5>
+                              <div class="row">
+                                <!-- col left -->
+                                <div class="col-left col-12 col-md-6">
+                                  <h6>Upload font your Citizen ID</h6>
+                                  <div ngx-dropzone class="upload" [multiple]="false" [accept]="'image/*'"
+                                    (change)="onSelectFontCitizenID($event)" *ngIf="showDiv.font" [(ngModel)]="front"  [ngModelOptions]="{standalone: true}">
+                                    <ngx-dropzone-label>
+                                      <div>
+                                        <i class="fas fa-cloud-upload-alt icon-upload"></i>
+                                        <header>Drop files here or click to upload *</header>
+                                      </div>
+                                    </ngx-dropzone-label>
+                                  </div>
+                                  <div class="wrapper" *ngFor="let f of fontCitizenIDfiles">
+                                    <ngx-dropzone-image-preview class="image-preview overflow-hidden"
+                                      ngProjectAs="ngx-dropzone-preview" [file]="f" [removable]="true"
+                                      (removed)="onRemoveFontCitizenID(f)">
+                                    </ngx-dropzone-image-preview>
+                                    <ngx-dropzone-label ngProjectAs="ngx-dropzone-preview" *ngFor="let f of fontCitizenIDfiles"
+                                      (removed)="onRemoveFontCitizenID(f)">{{
+                                      f.name }}</ngx-dropzone-label>
+                                  </div>
+                                </div>
+                                <!-- col right -->
+                                <div class="col-right col-12 col-md-6">
+                                  <h6>Upload back your Citizen ID</h6>
+                                  <div ngx-dropzone class="upload" [multiple]="false" [accept]="'image/*'"
+                                    (change)="onSelectBackCitizenID($event)" *ngIf="showDiv.back" [(ngModel)]="back" [ngModelOptions]="{standalone: true}">
+                                    <ngx-dropzone-label>
+                                      <div>
+                                        <i class="fas fa-cloud-upload-alt icon-upload"></i>
+                                        <header>Drop files here or click to upload *</header>
+                                      </div>
+                                    </ngx-dropzone-label>
+                                  </div>
+                                  <div class="wrapper" *ngFor="let f of backCitizenIDfiles">
+                                    <ngx-dropzone-image-preview class="image-preview overflow-hidden"
+                                      ngProjectAs="ngx-dropzone-preview" [file]="f" [removable]="true"
+                                      (removed)="onRemoveBackCitizenID(f)">
+                                    </ngx-dropzone-image-preview>
+                                    <ngx-dropzone-label ngProjectAs="ngx-dropzone-preview" *ngFor="let f of backCitizenIDfiles"
+                                      (removed)="onRemoveBackCitizenID(f)">{{
+                                      f.name }}</ngx-dropzone-label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="text-center pt-1  pb-1 login-button-div">
+                              <button class="login-button btn btn-primary btn-block w-100 fa-lg gradient-custom-2 mb-1"
+                                mat-raised-button type="submit">
+                                Register</button>
+                            </div>
+                          </form>
+                          <p>Having an account? <a routerLink="/Login" routerLinkActive="active"
+                              class="link-info gradient-text-1 fw-bold font-monospace fs-5">Login here</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>

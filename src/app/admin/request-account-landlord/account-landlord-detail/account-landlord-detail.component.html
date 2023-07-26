@@ -1,0 +1,108 @@
+<div class="wrapper m-0 p-0">
+  <div class="header py-3">
+    <h2>Request Register Landlord Acccount</h2>
+  </div>
+  <div class="body ">
+    <!-- <div *ngIf="registerError != null"> <h1 style="color: red;">{{registerError}}</h1></div> -->
+    <div class="body-container card mb-3">
+      <h4 class="mb-3">Basic Information</h4>
+      <div class="row-avatar-infor  w-100">
+        <div class="avatar px-1">
+          <img [src]="avatarUrl" class="img-thumbnail">
+        </div>
+
+
+        <div class="infor ">
+
+          <!-- 1 row -->
+          <div class="row w-100 mx-0 mb-2">
+            <div class="col-xl-6 mb-2">
+              <div class="row">
+                <div class=" col-sm-3 col-md-3 col-lg-3 col-xl-4  col-xxl-3 fs-5">Username: </div>
+                <div class="col-8 fill-input fs-5 ">
+                  <p>{{username}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 mb-2">
+              <div class="row">
+                <div class=" col-sm-3 col-md-3 col-lg-3 col-xl-4  col-xxl-3 fs-5">Email: </div>
+                <div class="col-8 fill-input fs-5 ">
+                  <p>{{email}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row w-100 mx-0 mb-2">
+            <div class="col-xl-6 mb-2">
+              <div class="row">
+                <div class=" col-sm-3 col-md-3 col-lg-3 col-xl-4  col-xxl-3 fs-5">Citizen ID: </div>
+                <div class="col-8 fill-input fs-5 ">
+                  <p>{{citizenIdentificationString}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 mb-2">
+              <div class="row">
+                <div class=" col-sm-3 col-md-3 col-lg-3 col-xl-4  col-xxl-3 fs-5 pe-0">Day of Birth: </div>
+                <div class="col-8 fill-input fs-5 ">
+                  <p>{{dob}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row w-100 mx-0 mb-2">
+            <div class="col-xl-6 mb-2">
+              <div class="row">
+                <div class=" col-sm-3 col-md-3 col-lg-3 col-xl-4  col-xxl-3 fs-5">Gender: </div>
+                <div class="col-8 fill-input fs-5 ">
+                  <p>{{gender}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 mb-2">
+              <div class="row">
+                <div class=" col-sm-3 col-md-3 col-lg-3 col-xl-4  col-xxl-3 fs-5">Phone: </div>
+                <div class="col-8 fill-input fs-5 ">
+                  <p>{{phone}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row flex-nowrap w-100 mx-0 mb-2 address-box">
+            <div class="address-text m-0 fs-5 ">Address: </div>
+            <div class="address-input  fill-input fs-5"><span>{{address}}</span></div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="IDcard mt-3">
+        <h4 class="my-3">Image Citizen Identification </h4>
+        <div class="image">
+          <div class="after">
+            <h5>Font Citizen Identification</h5>
+            <img [src]="citizenIdentificationUrlFont" class="img-thumbnail img-fluid">
+          </div>
+          <div class="before">
+            <h5>Back Citizen Identification</h5>
+            <img [src]="citizenIdentificationUrlBack" class="img-thumbnail img-fluid">
+          </div>
+
+        </div>
+      </div>
+      <br>
+      <hr class="w-100">
+      <div class="button d-flex flex-row px-4">
+
+        <button *ngIf="status == 'PENDING' || status == 'ACTIVATING'" class="btn-denied" mat-raised-button
+          (click)="openDialogAction()">Rejcet</button>
+        <button *ngIf="status == 'PENDING' || status !== 'ACTIVATING' " class="btn-accept" mat-raised-button (click)="accept()">Accept</button>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

@@ -1,0 +1,136 @@
+<div class="vh-100 v-100" [class.example-is-mobile]="mobileQuery.matches">
+
+  <mat-sidenav-container class="example-container vh-100 vw-100" [autosize]=" mobileQuery.matches ? 'false' : 'true' ">
+
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" [style.min-width]="!isExpanded ? '0' :''"
+      opened="true" class="left">
+      <img src="https://www.gstatic.com/mobilesdk/190424_mobilesdk/nav_nachos@2x.png" class="w-100 vh-100 pt-5"
+        *ngIf="isExpanded">
+      <section class="vh-100 sidenav" [style.position]="isExpanded? 'absolute' : 'unset'">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col p-0 vh-100">
+              <!-- Header -->
+              <nav class="w-100 navbar sticky-top navbar-expand-sm nav-logo p-0 ">
+                <div class="container-fluid">
+                  <a class="navbar-brand " routerLink="/Homepage" *ngIf="isExpanded">
+                    <img class="logo-isExpanded" src="/assets/images/logo-2.png">
+                  </a>
+                  <a class="navbar-brand me-0" routerLink="/Homepage" *ngIf="!isExpanded">
+                    <img class="logo " src="/assets/images/logo-4.png">
+                  </a>
+
+                </div>
+              </nav>
+              <div class="w-100 overflow-auto h-100 main-content" id="left">
+                <mat-nav-list>
+                  <!-- items -->
+                  <!--  Dashboard-->
+                  <mat-list-item class="sidenav-nav-link w-100 p-0" [style.text-align]="!isExpanded ? 'center' : 'unset'"
+                    routerLink="/Admin/Dashboard" routerLinkActive="active">
+                    <mat-icon class="sidenav-link-icon text-dark" matListItemIcon [style.margin]="!isExpanded ? '0!important' : ''" [style.width]="!isExpanded ? '100%' : ''">dashboard</mat-icon>
+                    <span class="sidenav-link-text w-100" *ngIf="isExpanded" matListItemTitle>Dashboard</span>
+                  </mat-list-item>
+                  <!-- items -->
+                  <!--  Landlord Management-->
+                  <mat-list-item class="sidenav-nav-link w-100 p-0" [style.text-align]="!isExpanded ? 'center' : 'unset'"
+                    routerLink="/Admin/RequestAccountLandlord" routerLinkActive="active">
+                    <mat-icon class="sidenav-link-icon text-dark" matListItemIcon [style.margin]="!isExpanded ? '0!important' : ''" [style.width]="!isExpanded ? '100%' : ''">groups</mat-icon>
+                    <span class="sidenav-link-text w-100" *ngIf="isExpanded" matListItemTitle>Landlord Management</span>
+                  </mat-list-item>
+                    <!-- items -->
+                  <!--  Bloc Homestay-->
+                  <mat-list-item class="sidenav-nav-link w-100 p-0" [style.text-align]="!isExpanded ? 'center' : 'unset'"
+                    routerLink="/Admin/BlockHomestay" routerLinkActive="active">
+                    <mat-icon class="sidenav-link-icon text-dark" matListItemIcon [style.margin]="!isExpanded ? '0!important' : ''" [style.width]="!isExpanded ? '100%' : ''">add_home</mat-icon>
+                    <span class="sidenav-link-text w-100" *ngIf="isExpanded" matListItemTitle>Block Homestay</span>
+                  </mat-list-item>
+                  <!--  Homestay-->
+                  <mat-list-item class="sidenav-nav-link w-100 p-0" [style.text-align]="!isExpanded ? 'center' : 'unset'"
+                    routerLink="/Admin/Homestay" routerLinkActive="active">
+                    <mat-icon class="sidenav-link-icon text-dark" matListItemIcon [style.margin]="!isExpanded ? '0!important' : ''" [style.width]="!isExpanded ? '100%' : ''">add_home</mat-icon>
+                    <span class="sidenav-link-text w-100" *ngIf="isExpanded" matListItemTitle>Homestay</span>
+                  </mat-list-item>
+
+                  <!-- items -->
+                  <!--  Chat-->
+                  <mat-list-item class="sidenav-nav-link w-100 p-0" [style.text-align]="!isExpanded ? 'center' : 'unset'"
+                    routerLink="/Admin/Chat" routerLinkActive="active">
+                    <mat-icon class="sidenav-link-icon text-dark" matListItemIcon [style.margin]="!isExpanded ? '0!important' : ''" [style.width]="!isExpanded ? '100%' : ''">chat</mat-icon>
+                    <span class="sidenav-link-text w-100" *ngIf="isExpanded" matListItemTitle>Message</span>
+                  </mat-list-item>
+
+                </mat-nav-list>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+
+
+      <section class="vh-100 ">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col p-0 vh-100 d-flex flex-column">
+              <!-- Header -->
+              <nav class="w-100 navbar sticky-top navbar-expand-sm bg-white p-0 ">
+                <div class="container-fluid">
+                  <button mat-icon-button
+                    (click)="mobileQuery.matches ? snav.toggle() : isExpanded = !isExpanded "><mat-icon>menu</mat-icon></button>
+                  <div class=""></div>
+
+                  <div>
+                    <div class="row user ">
+                      <div class="col icon text-center align-items-center ">
+                        <img [src]="avatarUrl" class="rounded-pill avatar">
+                      </div>
+                      <div class="col username pe-0">
+                        <span class="name overflow-hidden fw-bold text-break"> {{username}} </span>
+                        <div class="roles text-nowrap">{{role}}</div>
+                      </div>
+                      <div class="col collapse-avatar px-0">
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
+                          class="btn-collapse-avatar px-0">
+                          <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu" >
+                          <a mat-menu-item routerLink="/Admin/Profile">
+                            <mat-icon>account_circle</mat-icon>
+                            <span>Profile</span>
+                          </a>
+                          <button mat-menu-item (click)="logout()">
+                            <mat-icon>logout</mat-icon>
+                            <span>Logout</span>
+                          </button>
+
+                        </mat-menu>
+                      </div>
+                      <div class="col logout ps-0">
+                        <button mat-icon-button (click)="logout()" class="btn-logout">
+                          <i class="fa fa-sign-out"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+
+              <div class="w-100 overflow-auto main-content m-0 p-0 " id="right">
+                <router-outlet ></router-outlet>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+</div>

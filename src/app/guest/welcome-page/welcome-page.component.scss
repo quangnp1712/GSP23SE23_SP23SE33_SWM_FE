@@ -1,0 +1,237 @@
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fccb90;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #FFCE03, #FD9A01, #FD6104, #FF2C05);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #FFCE03, #FD9A01, #FD6104, #FF2C05);
+}
+
+.btn-register {
+  color: white !important;
+}
+
+.li-login {
+  button {
+    color: rgb(1, 148, 243);
+    letter-spacing: 0.7px;
+
+  }
+}
+
+.logo {
+  width: 200px;
+}
+
+
+
+@media (min-width: 992px) {
+  .content-container {
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 30%, rgba(255, 255, 255, 0.8) 44%, rgba(255, 255, 255, 0.4) 56%, rgba(255, 255, 255, 0) 68%);
+  }
+}
+
+.first-content {
+  img {
+    object-fit: cover;
+  }
+
+  .content-container {
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    background: linear-gradient(140deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 40%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.4) 80%, rgba(255, 255, 255, 0) 100%);
+
+    .content-box {
+      max-width: 1280px;
+
+      .content {
+        max-width: 640px;
+
+        .first-text {
+          margin-top: 80px;
+          font-size: 49px;
+
+        }
+
+        .second-text {
+          font-size: 21px;
+        }
+      }
+    }
+  }
+}
+
+.second-content {
+  .content-box {
+    width: 80%;
+    .content {
+
+      .content-left {
+        .first-text {
+          color: #4c4c4c;
+          font-size: 48px;
+        }
+
+        .second-text {
+          font-size: 16px;
+        }
+
+        .content-graphic {
+          right: -46px;
+          top: -18px;
+          width: 230px;
+          height: 230px;
+          z-index: -1;
+          background: linear-gradient(to right, #FEF001, #FFCE03, #F2B104);
+        }
+
+      }
+
+      .content-right {
+        height: 270px;
+
+        .carousel-item {
+          img {
+            min-height: 270px;
+            max-height: 270px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.third-content {
+  height: 700px;
+
+  .contain-box {
+    background-image: url(/assets/images/world-map-gray.png);
+
+    .content {
+      span {
+        color: #4c4c4c;
+      }
+
+      .col-md-4 {
+        background-image: url(/assets/images/homepage-1.png);
+        box-sizing: border-box;
+        background-size: cover;
+        width: 33.33333%;
+        height: 520px;
+        color: white;
+        span {
+          color: white;
+        }
+      }
+
+      .colum-8 {
+        background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 2%, rgba(0, 0, 0, 0.6) 18%, rgba(0, 0, 0, 0.5) 26%, rgba(0, 0, 0, 0.4) 36%, rgba(0, 0, 0, 0.2) 100%), url(/assets/images/homepage-2.png);
+        box-sizing: border-box;
+        background-size: cover;
+        height: 260px;
+        color: white;
+        span {
+          color: white;
+        }
+      }
+
+      .col-md-6 {
+        box-sizing: border-box;
+        height: 248px;
+      }
+
+      .bot-left {
+        background-image: url(/assets/images/homepage-3.png);
+        background-size: cover;
+        height: 247px;
+        box-sizing: border-box;
+        color: white;
+        span {
+          color: white;
+        }
+      }
+
+      .bot-right {
+        background-image: url(/assets/images/homepage-4.png);
+        background-size: cover;
+        height: 247px;
+        box-sizing: border-box;
+        color: white;
+        span {
+          color: white;
+        }
+      }
+
+    }
+  }
+
+}
+
+
+
+
+
+
+
+.footer {
+  background-image: url(/assets/images/bg.jpg);
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .logo {
+    width: 80px;
+  }
+}
+
+.latest-content {
+
+  height: 250px;
+
+
+  .banner {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0.4) 100%);
+
+    .banner-contain {
+
+      -webkit-box-align: center;
+
+
+      .banner-box {
+
+        max-width: 1280px;
+
+
+
+        .banner-content {
+
+          max-width: 640px;
+          -webkit-box-pack: center;
+
+          .banner-solgan {
+
+          }
+
+          button {
+            width: fit-content;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .latest-content {
+    height: 400px;
+  }
+}

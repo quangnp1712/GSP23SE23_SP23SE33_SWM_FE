@@ -1,0 +1,107 @@
+<section class="body-page">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col p-0 vh-100">
+        <!-- Header -->
+        <nav class="navbar sticky-top navbar-expand-sm bg-white p-0 ">
+          <div class="container-fluid">
+            <a class="navbar-brand" routerLink="/Homepage">
+              <img class="logo" src="/assets/images/logo-2.png">
+            </a>
+            <div class=""></div>
+            <div>
+              <ul class="navbar-nav me-auto  mb-lg-0">
+                <li class="nav-item mx-4 li-login d-flex align-items-center">
+                  <button mat-button class="nav-link active fs-5 fw-medium  " routerLink="/Login">Login</button>
+                  <!-- <a class="nav-link active fs-5" aria-current="page" href="#">Login</a> -->
+                </li>
+                <li class="nav-item d-flex align-items-center">
+                  <button mat-raised-button routerLink="/Register"
+                    class="btn-register btn btn-primary btn-block w-100 fa-lg gradient-custom-2 ">Register Your
+                    Accommodation</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <!-- First content -->
+        <section class=" first-content overflow-auto w-100">
+          <div class="">
+            <div class="content-container">
+              <div class="row w-100">
+                <div class="col">
+                  <div class="content-box w-100 py-0 px-4 my-0 mx-auto">
+                    <div class="content d-flex flex-column align-items-start py-5 px-0    ">
+                      <div class="card border-0  login-card">
+                        <div class="login-body card-body text-center">
+                          <div class=" ms-xl-4">
+                            <a routerLink="/Homepage"> <img class="logo" src="/assets/images/logo-3.png"></a>
+                          </div>
+                          <div>
+                            <h3 class=" mb-3 pb-3 align-items-center gradient-text-2 fw-bold font-monospace fs-1"
+                              style="letter-spacing: 1px;">Login</h3>
+                          </div>
+                          <form (ngSubmit)="getProfile()">
+                            <div class="login-input">
+                              <div class="username">
+                                <mat-form-field class="input-username w-100" appearance="outline">
+                                  <mat-label>Username</mat-label>
+                                  <input matInput type="text" required="Please Enter Username"
+                                    [formControl]="usernameFormControl" [errorStateMatcher]="matcher"
+                                    name="txtUsername">
+                                  <mat-icon matPrefix><i class="fa-solid fa-user"></i></mat-icon>
+                                  <mat-error *ngIf="usernameFormControl.hasError('required')">
+                                    Username is <strong>required</strong>
+                                  </mat-error>
+                                </mat-form-field>
+                              </div>
+                              <div class="password">
+                                <mat-form-field class="input-password w-100" appearance="outline">
+                                  <mat-label>Password</mat-label>
+                                  <input matInput type="password" name="txtPassword" [formControl]="passwordFormControl"
+                                    [errorStateMatcher]="matcher" required="Please Enter PaformControlssword"
+                                    [type]="hide ? 'password' : 'text'">
+                                  <mat-icon matPrefix><i class="fa-solid fa-key"></i></mat-icon>
+                                  <button type="button" class="border-0  " mat-icon-button matSuffix
+                                    (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                    [attr.aria-pressed]="hide">
+                                    <mat-icon matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                  </button>
+                                  <mat-error *ngIf="passwordFormControl.hasError('required')">
+                                    Password is <strong>required</strong>
+                                  </mat-error>
+
+                                </mat-form-field>
+                              </div>
+                            </div>
+                            <div class="text-center pt-1  pb-1 login-button-div d-flex flex-column justify-content-center align-items-end">
+                              <p class=""><a class="gradient-text-1 fs-6" routerLink="/ForgotPassword">Forgot
+                                  password?</a></p>
+                              <button class="login-button btn btn-primary btn-block w-100 fa-lg gradient-custom-2 mb-3 fw-medium  "
+                                mat-raised-button type="submit">
+                                Login</button>
+                            </div>
+                          </form>
+                          <!-- <div class="login-gmail w-100 text-center position-relative   ">
+                            <span class="font-monospace w-auto position-relative  py-0 px-3  ">Or</span>
+                          </div>
+                          <div class="w-100 d-flex align-items-center justify-content-center">
+                            <asl-google-signin-button type='standard' size='large' data-theme="filled_blue"
+                              *ngIf="!user">
+                            </asl-google-signin-button>
+                          </div> -->
+                          <p class="mt-3">Don't have an account? <a routerLink="/Register" routerLinkActive="active"
+                              class="link-info gradient-text-1  fw-bold font-monospace fs-5">Register here</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>

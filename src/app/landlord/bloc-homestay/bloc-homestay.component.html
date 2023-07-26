@@ -1,0 +1,104 @@
+<div class="wrapper">
+  <div class="container pt-5 mb-3">
+    <div class="container-fluid">
+      <div *ngIf="isDelete == 'true'">
+        <h1 style="text-align: center; color: green;">Delete Homestay Success!!!!</h1>
+      </div>
+      <div *ngIf="isDelete == 'false'">
+        <h1 style="text-align: center; color: red;">Delete Homestay fail!!!!</h1>
+      </div>
+      <div class="header">
+        <h1>Block Homestay</h1>
+      </div>
+      <div class="content">
+        <div class="  header-content">
+          <div class=" text">
+            A quick add homestay
+          </div>
+          <div class="btn-register">
+            <a mat-raised-button routerLink="/Landlord/Category">Register</a>
+          </div>
+        </div>
+        <!-- Pending -->
+        <div class="row main-content">
+
+          <div class="col-sm-4" *ngFor="let item of valuePending">
+            <div class="card">
+              <div class="card-body pt-0">
+                <h5 class="card-header text-center text-white w-100 bg-warning bg-gradient" > {{item.status}} </h5>
+                <div class="image img-fluid w-100" routerLink="../BlockHomestayDetail" (click)="getHomestayName(item.name)">
+                  <img [src]="item.imgURL">
+                </div>
+                <div class="name" routerLink="../BlockHomestayDetail" (click)="getHomestayName(item.name)">
+                  {{item.name}}
+                </div>
+                <div class="button">
+                  <!-- <a mat-raised-button color="warn" mat-button (click)="getHomestayId(item.id)" (click)="deleteHomestay()">Delete</a> -->
+                  <!-- <a mat-raised-button color="warn" mat-button (click)="getHomestayId(item.id)"
+                    (click)="openDialog()">Delete</a> -->
+                  <a mat-raised-button color="primary" routerLink="../BlockHomestayDetail"
+                    (click)="getHomestayName(item.name)">View</a>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row main-content">
+
+          <div class="col-sm-4" *ngFor="let item of valueActivating">
+            <div class="card">
+              <div class="card-body pt-0">
+                <h5  [matBadgeHidden]="!item.isPendingBooking" [matBadge]="'!'" matBadgePosition="after" matBadgeColor="warn" matBadgeSize="small" class="card-header text-center text-white w-100" [class]="item.status == 'ACTIVATING' ? 'bg-success' : item.status == 'PENDING' ? 'bg-warning bg-gradient' : item.status == 'REJECT' ? 'bg-danger bg-gradient' : 'bg-secondary bg-gradient'"> {{item.status}} </h5>
+                <div class="image img-fluid w-100" routerLink="../BlockHomestayDetail" (click)="getHomestayName(item.name)">
+                  <img [src]="item.imgURL">
+                </div>
+                <div class="name" routerLink="../BlockHomestayDetail" (click)="getHomestayName(item.name)">
+                  {{item.name}}
+                </div>
+                <div class="button">
+                  <!-- <a mat-raised-button color="warn" mat-button (click)="getHomestayId(item.id)" (click)="deleteHomestay()">Delete</a> -->
+                  <!-- <a mat-raised-button color="warn" mat-button (click)="getHomestayId(item.id)"
+                    (click)="openDialog()">Delete</a> -->
+                  <a mat-raised-button color="primary" routerLink="../BlockHomestayDetail"
+                    (click)="getHomestayName(item.name)">View</a>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row main-content">
+
+          <div class="col-sm-4" *ngFor="let item of valueReject">
+            <div class="card">
+              <div class="card-body pt-0">
+                <h5 class="card-header text-center text-white w-100 bg-danger bg-gradient"> {{item.status}} </h5>
+                <div class="image img-fluid w-100" routerLink="../BlockHomestayDetail" (click)="getHomestayName(item.name)">
+                  <img [src]="item.imgURL">
+                </div>
+                <div class="name" routerLink="../BlockHomestayDetail" (click)="getHomestayName(item.name)">
+                  {{item.name}}
+                </div>
+                <div class="button">
+                  <!-- <a mat-raised-button color="warn" mat-button (click)="getHomestayId(item.id)" (click)="deleteHomestay()">Delete</a> -->
+                  <a mat-raised-button color="warn" mat-button (click)="getHomestayId(item.id)"
+                    (click)="openDialog()">Delete</a>
+                  <a mat-raised-button color="primary" routerLink="../BlockHomestayDetail"
+                    (click)="getHomestayName(item.name)">View</a>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

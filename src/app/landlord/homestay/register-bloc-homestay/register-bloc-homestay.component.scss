@@ -1,0 +1,80 @@
+.mat-stepper-horizontal,
+.mat-stepper-vertical {
+  background-color: unset;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.input-content {
+
+
+  .add-input {
+    background: white;
+    padding-bottom: 30px;
+  }
+}
+
+
+:host ::ng-deep .city-select .mat-mdc-form-field-infix {
+  padding-top: 4.5px !important;
+  padding-bottom: 3.6px !important;
+  height: 35.4px !important;
+  min-height: 35.4px !important;
+  max-height: 35.4px !important;
+}
+
+:host ::ng-deep .city-select .mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}
+
+// button
+
+.add-btn {
+
+  .btn-next {
+    width: 78px;
+    font-size: large;
+    font-weight: 500;
+  }
+
+  .submit {
+    width: 88px;
+  }
+
+  .btn-back,
+  .btn-reset {
+    width: 90px;
+    background-color: #D9D9D9;
+    margin: 0 1%;
+    font-size: large;
+    font-weight: 500;
+  }
+}
+
+.basic-information {
+  .select-form {
+    height: 35.4px;
+  }
+}
+
+.additional-facility {
+  .btn-add-facility{
+    height: 35px;
+    max-height: 40px;
+
+  }
+}
+.click{
+  cursor: pointer;
+}
+
+.overview-img{
+  height: 99px !important;
+  min-height: 99px !important;
+  width: 99px !important;
+}

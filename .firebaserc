@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "stay-with-me-356017": {
+      "hosting": {
+        "SBHS_FE": [
+          "stay-with-me-356017"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "stay-with-me-356017"
+  }
+}
